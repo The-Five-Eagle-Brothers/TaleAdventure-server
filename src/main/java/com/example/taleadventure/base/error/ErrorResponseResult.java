@@ -31,4 +31,8 @@ public enum ErrorResponseResult {
 
     private final ErrorStatusCode statusCode;
     private final String message;
+
+    public int getStatus(){
+        return statusCode.getStatus();
+    }
 }
