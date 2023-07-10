@@ -4,15 +4,15 @@ import com.example.taleadventure.base.error.ErrorResponseResult;
 import lombok.Getter;
 
 @Getter
-public class BusinessException extends RuntimeException{
+public class TaleAdventureException extends RuntimeException{
 
     private final ErrorResponseResult result;
 
-    public BusinessException(String message, ErrorResponseResult errorResponseResult){
+    public TaleAdventureException(String message, ErrorResponseResult errorResponseResult){
         super(message);
         this.result = errorResponseResult;
     }
-    
+
     public int getStatus(){
         return result.getStatus();
     }
