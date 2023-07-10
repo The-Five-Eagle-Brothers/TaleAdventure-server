@@ -8,7 +8,7 @@ import static com.example.taleadventure.base.success.SuccessStatusCode.CREATED;
 
 @Getter
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
-public enum SuccessResultResponse {
+public enum SuccessResponseResult {
     // 200 OK
 
     // 201 CREATED
