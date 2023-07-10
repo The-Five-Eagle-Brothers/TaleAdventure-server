@@ -4,6 +4,8 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
+import static com.example.taleadventure.base.error.ErrorStatusCode.NOT_FOUND;
+
 @Getter
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 public enum ErrorResponseResult {
@@ -14,7 +16,7 @@ public enum ErrorResponseResult {
     // 403 FORBIDDEN
 
     // 404 NOT_FOUND
-
+    NOT_FOUND_USER_EXCEPTION(NOT_FOUND,"존재하지 않는 사용자입니다");
     // 405 METHOD_NOT_ALLOWED
 
     // 406 NOT_ACCEPTABLE
