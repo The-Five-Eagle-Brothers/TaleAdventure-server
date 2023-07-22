@@ -1,4 +1,4 @@
-package com.example.taleadventure.domain.wordbook.entity;
+package com.example.taleadventure.domain.block.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,10 +11,12 @@ import javax.persistence.Id;
 @Entity
 @Getter
 @NoArgsConstructor
-public class WordBook {
+public class Block {
     @Id
     @GeneratedValue
-    @Column(name = "word_book_id", nullable = false)
+    @Column(name = "block_id", nullable = false)
     private Long id;
 
+    @Column(nullable = false, length = 1)
+    private String letter;
 }
