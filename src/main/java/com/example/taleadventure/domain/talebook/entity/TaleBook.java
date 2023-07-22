@@ -1,5 +1,6 @@
 package com.example.taleadventure.domain.talebook.entity;
 
+import com.example.taleadventure.domain.talebook.enummerate.Category;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
