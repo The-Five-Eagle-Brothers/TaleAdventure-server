@@ -13,7 +13,7 @@ public class Word {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "word_id", nullable = false)
     private Long id;
-    
+
     @Column(nullable = false)
     private String name;
 
