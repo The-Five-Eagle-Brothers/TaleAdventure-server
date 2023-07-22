@@ -1,5 +1,7 @@
 package com.example.taleadventure.domain.member.entity;
 
+import com.example.taleadventure.domain.member.enummerate.Gender;
+import com.example.taleadventure.domain.member.enummerate.Status;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
