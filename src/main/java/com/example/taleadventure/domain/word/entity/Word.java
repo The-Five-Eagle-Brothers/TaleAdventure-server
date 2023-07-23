@@ -1,5 +1,6 @@
 package com.example.taleadventure.domain.word.entity;
 
+import com.example.taleadventure.domain.talebook.entity.TaleBook;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -19,5 +20,9 @@ public class Word {
 
     @Column(nullable = false)
     private String mean;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "tale_book_id")
+    private TaleBook taleBook;
 
 }

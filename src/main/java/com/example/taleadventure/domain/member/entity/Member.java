@@ -2,6 +2,7 @@ package com.example.taleadventure.domain.member.entity;
 
 import com.example.taleadventure.domain.member.enummerate.Gender;
 import com.example.taleadventure.domain.member.enummerate.Status;
+import com.example.taleadventure.domain.wordbook.entity.WordBook;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -38,4 +39,7 @@ public class Member {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Status status;
+
+    @OneToOne(mappedBy = "member")
+    private WordBook wordBook;
 }
