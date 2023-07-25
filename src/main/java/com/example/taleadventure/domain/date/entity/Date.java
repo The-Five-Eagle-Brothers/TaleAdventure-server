@@ -1,4 +1,4 @@
-package com.example.taleadventure.domain.day.entity;
+package com.example.taleadventure.domain.date.entity;
 
 import lombok.*;
 
@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Day {
+public class Date {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "day_id", nullable = false)

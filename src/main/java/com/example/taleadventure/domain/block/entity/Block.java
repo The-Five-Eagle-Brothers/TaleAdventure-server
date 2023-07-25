@@ -1,7 +1,6 @@
 package com.example.taleadventure.domain.block.entity;
 
-import com.example.taleadventure.domain.day.entity.Day;
-import com.example.taleadventure.domain.talebook.entity.TaleBook;
+import com.example.taleadventure.domain.date.entity.Date;
 import lombok.*;
 
 import javax.persistence.*;
@@ -24,6 +23,6 @@ public class Block {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "day_id")
-    private Day day;
+    private Date date;
 
 }
