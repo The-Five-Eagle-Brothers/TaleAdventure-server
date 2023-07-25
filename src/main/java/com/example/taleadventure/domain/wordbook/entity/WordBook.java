@@ -2,15 +2,17 @@ package com.example.taleadventure.domain.wordbook.entity;
 
 import com.example.taleadventure.domain.member.entity.Member;
 import com.example.taleadventure.domain.word.entity.Word;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@ToString
+@Builder
 @Entity
 @Getter
+@AllArgsConstructor
 @NoArgsConstructor
 public class WordBook {
     @Id

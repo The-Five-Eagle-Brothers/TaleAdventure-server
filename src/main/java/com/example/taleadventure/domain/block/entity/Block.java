@@ -2,13 +2,16 @@ package com.example.taleadventure.domain.block.entity;
 
 import com.example.taleadventure.domain.day.entity.Day;
 import com.example.taleadventure.domain.talebook.entity.TaleBook;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
+@ToString
+@Builder
 @Entity
 @Getter
+@Table(name = "block")
+@AllArgsConstructor
 @NoArgsConstructor
 public class Block {
     @Id

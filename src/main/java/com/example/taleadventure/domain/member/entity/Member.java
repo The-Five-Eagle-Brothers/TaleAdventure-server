@@ -1,17 +1,20 @@
 package com.example.taleadventure.domain.member.entity;
 
+import com.example.taleadventure.base.entity.AuditingTimeEntity;
 import com.example.taleadventure.domain.member.enummerate.Gender;
 import com.example.taleadventure.domain.member.enummerate.Status;
 import com.example.taleadventure.domain.wordbook.entity.WordBook;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
+@ToString
+@Builder
 @Entity
 @Getter
+@AllArgsConstructor
 @NoArgsConstructor
-public class Member {
+public class Member extends AuditingTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "member_id", nullable = false)

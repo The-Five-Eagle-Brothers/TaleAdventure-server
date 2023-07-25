@@ -1,13 +1,15 @@
 package com.example.taleadventure.domain.talebook.entity;
 
 import com.example.taleadventure.domain.talebook.enummerate.Category;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
+@ToString
+@Builder
 @Entity
 @Getter
+@AllArgsConstructor
 @NoArgsConstructor
 public class TaleBook {
     @Id
