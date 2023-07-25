@@ -1,6 +1,6 @@
 package com.example.taleadventure.domain.block.entity;
 
-import com.example.taleadventure.domain.date.entity.Date;
+import com.example.taleadventure.domain.day.entity.DayEntity;
 import lombok.*;
 
 import javax.persistence.*;
@@ -9,10 +9,9 @@ import javax.persistence.*;
 @Builder
 @Entity
 @Getter
-@Table(name = "block")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Block {
+public class BlockEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "block_id", nullable = false)
@@ -23,6 +22,6 @@ public class Block {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "day_id")
-    private Date date;
+    private DayEntity dayEntity;
 
 }

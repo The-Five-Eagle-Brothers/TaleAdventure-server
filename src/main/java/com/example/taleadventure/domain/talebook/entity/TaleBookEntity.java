@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class TaleBook {
+public class TaleBookEntity {
     @Id
     @GeneratedValue
     @Column(name = "tale_book_id", nullable = false)

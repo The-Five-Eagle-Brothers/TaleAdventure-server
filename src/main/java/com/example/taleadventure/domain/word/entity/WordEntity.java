@@ -1,18 +1,19 @@
 package com.example.taleadventure.domain.word.entity;
 
 import com.example.taleadventure.base.entity.AuditingTimeEntity;
-import com.example.taleadventure.domain.talebook.entity.TaleBook;
+import com.example.taleadventure.domain.talebook.entity.TaleBookEntity;
 import lombok.*;
 
 import javax.persistence.*;
 
-@ToString
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
 @Builder
 @Entity
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Word extends AuditingTimeEntity {
+public class WordEntity extends AuditingTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "word_id", nullable = false)
@@ -26,6 +27,6 @@ public class Word extends AuditingTimeEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "tale_book_id")
-    private TaleBook taleBook;
+    private TaleBookEntity taleBookEntity;
 
 }
