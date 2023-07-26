@@ -1,6 +1,6 @@
 package com.example.taleadventure.domain.block.entity;
 
-import com.example.taleadventure.domain.day.entity.DayEntity;
+import com.example.taleadventure.domain.day.entity.Day;
 import lombok.*;
 
 import javax.persistence.*;
@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class BlockEntity {
+public class Block {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "block_id", nullable = false)
@@ -19,9 +19,5 @@ public class BlockEntity {
 
     @Column(nullable = false, length = 1)
     private String letter;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "day_id")
-    private DayEntity dayEntity;
 
 }

@@ -1,9 +1,9 @@
-package com.example.taleadventure.domain.user.entity;
+package com.example.taleadventure.domain.member.entity;
 
 import com.example.taleadventure.base.entity.AuditingTimeEntity;
-import com.example.taleadventure.domain.user.enummerate.Gender;
-import com.example.taleadventure.domain.user.enummerate.Status;
-import com.example.taleadventure.domain.wordbook.entity.WordBookEntity;
+import com.example.taleadventure.domain.member.enummerate.Gender;
+import com.example.taleadventure.domain.member.enummerate.Status;
+import com.example.taleadventure.domain.wordbook.entity.WordBook;
 import lombok.*;
 
 import javax.persistence.*;
@@ -15,10 +15,10 @@ import javax.persistence.*;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserEntity extends AuditingTimeEntity {
+public class Member extends AuditingTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id", nullable = false)
+    @Column(name = "member_id", nullable = false)
     private Long id;
 
     @Column(nullable = false)
@@ -44,6 +44,7 @@ public class UserEntity extends AuditingTimeEntity {
     @Column(nullable = false)
     private Status status;
 
-    @OneToOne(mappedBy = "userEntity")
-    private WordBookEntity wordBookEntity;
+    @OneToOne
+    @JoinColumn(name = "word_book_id")
+    private WordBook wordBook;
 }
