@@ -1,13 +1,13 @@
-package com.example.taleadventure;
+/*package com.example.taleadventure;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-//@SpringBootTest
+@SpringBootTest
 class TaleAdventureApplicationTests {
 
-    //@Test
+    @Test
     void contextLoads() {
     }
 
-}
+}*/
