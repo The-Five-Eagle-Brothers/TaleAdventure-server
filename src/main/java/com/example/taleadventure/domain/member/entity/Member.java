@@ -21,14 +21,12 @@ public class Member extends AuditingTimeEntity {
     @Column(name = "member_id", nullable = false)
     private Long id;
 
-    @Column(nullable = false)
-    private String name;
+    private String name;    // 따로 받자
 
     @Column(nullable = false)
     private String nickName;
 
-    @Column(nullable = false)
-    private String phoneNumber;
+    private String phoneNumber; // 따로 받자
 
     @Column(nullable = false)
     private String email;
@@ -37,8 +35,7 @@ public class Member extends AuditingTimeEntity {
     @Column(nullable = false)
     private Gender gender;
 
-    @Column(nullable = false)
-    private Integer age;
+    private Integer age;    // 따로 받자
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
