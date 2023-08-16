@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-PROJECT_ROOT="/home/ubuntu/app"
+PROJECT_ROOT="/home/ubuntu/tale-adventure-server"
 JAR_FILE="$PROJECT_ROOT/taleadventure.jar"
 
 APP_LOG="$PROJECT_ROOT/application.log"
