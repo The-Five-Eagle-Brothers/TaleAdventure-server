@@ -5,12 +5,13 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 import static com.example.taleadventure.base.success.SuccessStatusCode.CREATED;
+import static com.example.taleadventure.base.success.SuccessStatusCode.OK;
 
 @Getter
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 public enum SuccessResponseResult {
     // 200 OK
-
+    SUCCESS_OK(OK, ""),
     // 201 CREATED
     SUCCESS_CREATED(CREATED, "");
     // 202 ACCEPTED

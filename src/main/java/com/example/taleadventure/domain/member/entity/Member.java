@@ -1,6 +1,7 @@
 package com.example.taleadventure.domain.member.entity;
 
 import com.example.taleadventure.base.entity.AuditingTimeEntity;
+import com.example.taleadventure.domain.member.dto.LoginResponseDto;
 import com.example.taleadventure.domain.member.enummerate.Gender;
 import com.example.taleadventure.domain.member.enummerate.Status;
 import com.example.taleadventure.domain.wordbook.entity.WordBook;
@@ -44,4 +45,37 @@ public class Member extends AuditingTimeEntity {
     @OneToOne
     @JoinColumn(name = "word_book_id")
     private WordBook wordBook;
+
+    public static String statusEnumToString(Status status){
+        if(status == Status.ACTIVE){
+            return "active";
+        }else{
+            return "inactive";
+        }
+    }
+
+    public void setAge(Integer age){
+        this.age = age;
+
+    }
+
+    public void setWordBook(WordBook wordBook) {
+        this.wordBook = wordBook;
+    }
+
+    public static String genderEnumToString(Gender gender){
+        if(gender == Gender.MALE){
+            return "male";
+        }else{
+            return "female";
+        }
+    }
+
+    public static Gender genderStringToEnum(String str){
+        if(str.equals("male")){
+            return Gender.MALE;
+        }else{
+            return Gender.FEMALE;
+        }
+    }
 }

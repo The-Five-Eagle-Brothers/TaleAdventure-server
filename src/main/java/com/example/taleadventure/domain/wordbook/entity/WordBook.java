@@ -26,4 +26,5 @@ public class WordBook {
     @OneToMany
     @JoinColumn(name = "word_book_id")
     private List<Word> words = new ArrayList<>();
+
 }

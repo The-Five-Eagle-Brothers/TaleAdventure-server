@@ -2,13 +2,16 @@ package com.example.taleadventure.domain.member.service;
 
 import com.example.taleadventure.base.config.login.KakaoProfile;
 import com.example.taleadventure.base.config.login.OAuthToken;
+import com.example.taleadventure.base.error.exception.TaleAdventureException;
+import com.example.taleadventure.domain.member.dto.LoginResponseDto;
+import com.example.taleadventure.domain.member.dto.MemberInfoDto;
 import com.example.taleadventure.domain.member.entity.Member;
-import com.example.taleadventure.domain.member.enummerate.Gender;
 import com.example.taleadventure.domain.member.enummerate.Status;
 import com.example.taleadventure.domain.member.repository.MemberRepository;
+import com.example.taleadventure.domain.wordbook.entity.WordBook;
+import com.example.taleadventure.domain.wordbook.repository.WordBookRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -28,8 +31,12 @@ public class MemberService {
     private String clientId;
     private final MemberRepository memberRepository;
 
-    public MemberService(MemberRepository memberRepository) {
+    @Autowired
+    private final WordBookRepository wordBookRepository;
+
+    public MemberService(MemberRepository memberRepository, WordBookRepository wordBookRepository) {
         this.memberRepository = memberRepository;
+        this.wordBookRepository = wordBookRepository;
     }
 
     @Transactional
@@ -65,7 +72,7 @@ public class MemberService {
     }
 
     @Transactional
-    public String getUserInformation(String token){
+    public LoginResponseDto getUserInformation(String token){
         RestTemplate rt = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization", "Bearer " + token);
@@ -91,7 +98,7 @@ public class MemberService {
         Member kakaoMember = Member.builder()
                 .nickName(kakaoProfile.getKakao_account().getProfile().nickname)
                 .email(kakaoProfile.getKakao_account().email)
-                .gender(genderStringToEnum(kakaoProfile.getKakao_account().gender))
+                .gender(Member.genderStringToEnum(kakaoProfile.getKakao_account().gender))
                 .status(Status.ACTIVE)
                 .build();
 
@@ -102,19 +109,23 @@ public class MemberService {
 
         if(originMember.getEmail() == null){
             originMember = kakaoMember;
+
+            WordBook wordBook = new WordBook();
+            wordBookRepository.save(wordBook);
+
+            originMember.setWordBook(wordBook);
             memberRepository.save(originMember);
-            return "회원가입 완료 : " + originMember.toString();
+            return LoginResponseDto.of(originMember, token);
         }else{
-            return "이미 가입된 회원 : " + originMember.toString();
+            return LoginResponseDto.of(originMember, token);
         }
     }
 
-    public Gender genderStringToEnum(String str){
-        if(str.equals("male")){
-            return Gender.MALE;
-        }else{
-            return Gender.FEMALE;
-        }
+    @Transactional
+    public MemberInfoDto setMemberAge (Integer age, Long memberId){
+        Member member = MemberServiceUtils.findById(memberRepository, memberId);
+        member.setAge(age);
+        return MemberInfoDto.of(memberRepository.save(member));
     }
 }
 

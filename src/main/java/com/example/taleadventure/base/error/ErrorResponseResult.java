@@ -4,13 +4,14 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
+import static com.example.taleadventure.base.error.ErrorStatusCode.BAD_REQUEST;
 import static com.example.taleadventure.base.error.ErrorStatusCode.NOT_FOUND;
 
 @Getter
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 public enum ErrorResponseResult {
     // 400 BAD_REQUEST
-
+    VALIDATION_EXCEPTION(BAD_REQUEST, "잘못된 요청입니다"),
     // 401 UNAUTHORIZED
 
     // 403 FORBIDDEN
