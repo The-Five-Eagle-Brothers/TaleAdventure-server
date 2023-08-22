@@ -28,11 +28,17 @@ public class MemberController {
         return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_OK, memberService.getUserInformation(token));
     }
 
-    @PatchMapping("/age")
+    @PatchMapping("/set/age")
     public ApiSuccessResponse<MemberInfoDto> setAge(HttpServletRequest request, @RequestBody Integer age){
         String token = request.getHeader("Authorization");
         Long memberId = tokenProvider.getUserPk(token);
         return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_OK, memberService.setMemberAge(age, memberId));
     }
 
+    @PatchMapping("/set/name-phone-number")
+    public ApiSuccessResponse<MemberInfoDto> setAge(HttpServletRequest request, @RequestBody String name, @RequestBody String phoneNumber){
+        String token = request.getHeader("Authorization");
+        Long memberId = tokenProvider.getUserPk(token);
+        return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_OK, memberService.setMemberNameAndPhoneNumber(name, phoneNumber, memberId));
+    }
 }

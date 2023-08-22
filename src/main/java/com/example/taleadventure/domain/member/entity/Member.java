@@ -54,6 +54,14 @@ public class Member extends AuditingTimeEntity {
         }
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
     public void setAge(Integer age){
         this.age = age;
 

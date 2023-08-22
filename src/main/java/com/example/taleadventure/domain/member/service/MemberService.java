@@ -127,5 +127,13 @@ public class MemberService {
         member.setAge(age);
         return MemberInfoDto.of(memberRepository.save(member));
     }
+
+    @Transactional
+    public MemberInfoDto setMemberNameAndPhoneNumber (String name, String phoneNumber, Long memberId){
+        Member member = MemberServiceUtils.findById(memberRepository, memberId);
+        member.setName(name);
+        member.setPhoneNumber(phoneNumber);
+        return MemberInfoDto.of(memberRepository.save(member));
+    }
 }
 
