@@ -7,6 +7,7 @@ import com.example.taleadventure.base.error.exception.TaleAdventureException;
 import com.example.taleadventure.base.success.SuccessResponseResult;
 import com.example.taleadventure.domain.member.dto.LoginResponseDto;
 import com.example.taleadventure.domain.member.dto.MemberInfoDto;
+import com.example.taleadventure.domain.member.dto.MemberNameAndPhoneNumberDto;
 import com.example.taleadventure.domain.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/member")
 public class MemberController {
     @Autowired
     private MemberService memberService;
@@ -37,9 +38,9 @@ public class MemberController {
     }
 
     @PatchMapping("/set/name-phone-number")
-    public ApiSuccessResponse<MemberInfoDto> setNameAndPhoneNumber(HttpServletRequest request, @RequestBody Map<String,String> name, @RequestBody Map<String,String> phoneNumber){
+    public ApiSuccessResponse<MemberInfoDto> setNameAndPhoneNumber(HttpServletRequest request, @RequestBody MemberNameAndPhoneNumberDto memberNameAndPhoneNumberDto){
         String token = request.getHeader("Authorization");
         Long memberId = tokenProvider.getUserPk(token);
-        return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_OK, memberService.setMemberNameAndPhoneNumber(name.get("name"), phoneNumber.get("phoneNumber"), memberId));
+        return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_OK, memberService.setMemberNameAndPhoneNumber(memberNameAndPhoneNumberDto, memberId));
     }
 }

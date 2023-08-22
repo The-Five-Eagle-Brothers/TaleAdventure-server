@@ -5,6 +5,7 @@ import com.example.taleadventure.base.config.login.OAuthToken;
 import com.example.taleadventure.base.error.exception.TaleAdventureException;
 import com.example.taleadventure.domain.member.dto.LoginResponseDto;
 import com.example.taleadventure.domain.member.dto.MemberInfoDto;
+import com.example.taleadventure.domain.member.dto.MemberNameAndPhoneNumberDto;
 import com.example.taleadventure.domain.member.entity.Member;
 import com.example.taleadventure.domain.member.enummerate.Status;
 import com.example.taleadventure.domain.member.repository.MemberRepository;
@@ -48,7 +49,7 @@ public class MemberService {
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
         params.add("grant_type","authorization_code");
         params.add("client_id", clientId);
-        params.add("redirect_uri", "http://localhost:8080/user/auth/kakao");
+        params.add("redirect_uri", "http://localhost:8080/member/auth/kakao");
         params.add("code", code);
 
         HttpEntity<MultiValueMap<String, String>> kakaoTokenRequest = new HttpEntity<>(params, headers);
@@ -129,10 +130,10 @@ public class MemberService {
     }
 
     @Transactional
-    public MemberInfoDto setMemberNameAndPhoneNumber (String name, String phoneNumber, Long memberId){
+    public MemberInfoDto setMemberNameAndPhoneNumber (MemberNameAndPhoneNumberDto memberNameAndPhoneNumberDto, Long memberId){
         Member member = MemberServiceUtils.findById(memberRepository, memberId);
-        member.setName(name);
-        member.setPhoneNumber(phoneNumber);
+        member.setName(memberNameAndPhoneNumberDto.getName());
+        member.setPhoneNumber(memberNameAndPhoneNumberDto.getPhoneNumber());
         return MemberInfoDto.of(memberRepository.save(member));
     }
 }
