@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/user")
@@ -29,16 +30,16 @@ public class MemberController {
     }
 
     @PatchMapping("/set/age")
-    public ApiSuccessResponse<MemberInfoDto> setAge(HttpServletRequest request, @RequestBody Integer age){
+    public ApiSuccessResponse<MemberInfoDto> setAge(HttpServletRequest request, @RequestBody Map<String,Integer> age){
         String token = request.getHeader("Authorization");
         Long memberId = tokenProvider.getUserPk(token);
-        return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_OK, memberService.setMemberAge(age, memberId));
+        return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_OK, memberService.setMemberAge(age.get("age"), memberId));
     }
 
     @PatchMapping("/set/name-phone-number")
-    public ApiSuccessResponse<MemberInfoDto> setAge(HttpServletRequest request, @RequestBody String name, @RequestBody String phoneNumber){
+    public ApiSuccessResponse<MemberInfoDto> setNameAndPhoneNumber(HttpServletRequest request, @RequestBody Map<String,String> name, @RequestBody Map<String,String> phoneNumber){
         String token = request.getHeader("Authorization");
         Long memberId = tokenProvider.getUserPk(token);
-        return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_OK, memberService.setMemberNameAndPhoneNumber(name, phoneNumber, memberId));
+        return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_OK, memberService.setMemberNameAndPhoneNumber(name.get("name"), phoneNumber.get("phoneNumber"), memberId));
     }
 }
