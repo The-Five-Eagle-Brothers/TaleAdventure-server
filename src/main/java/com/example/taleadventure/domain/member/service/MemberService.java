@@ -144,5 +144,10 @@ public class MemberService {
         return MemberInfoDto.of(memberRepository.save(member));
     }
 
+    @Transactional
+    public void deleteMember(Long memberId){
+        memberRepository.delete(MemberServiceUtils.findById(memberRepository, memberId));
+    }
+
 }
 

@@ -50,4 +50,12 @@ public class MemberController {
         Long memberId = tokenProvider.getUserPk(token);
         return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_OK, memberService.updateMember(memberInfoDto, memberId));
     }
+
+    @DeleteMapping("/delete-member")
+    public ApiSuccessResponse<String> deleteMember(HttpServletRequest request){
+        String token = request.getHeader("Authorization");
+        Long memberId = tokenProvider.getUserPk(token);
+        memberService.deleteMember(memberId);
+        return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_DELETE_MEMBER);
+    }
 }

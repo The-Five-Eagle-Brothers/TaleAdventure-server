@@ -14,7 +14,12 @@ public class ApiSuccessResponse<T> {
     private String message;
     private T data;
 
+    public static<T> ApiSuccessResponse<T> successResponse(SuccessResponseResult successResponseResult){
+        return new ApiSuccessResponse<>(successResponseResult.getSuccessStatusCode(), successResponseResult.getMessage(), null);
+    }
+
     public static <T> ApiSuccessResponse<T> successResponse(SuccessResponseResult successResponseResult, T data){
         return new ApiSuccessResponse<>(successResponseResult.getSuccessStatusCode(), successResponseResult.getMessage(), data);
     }
+
 }
