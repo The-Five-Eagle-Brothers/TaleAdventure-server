@@ -9,7 +9,6 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MemberInfoDto {
-    private Long userId;
     private String name;
     private String nickName;
     private String phoneNumber;
@@ -17,11 +16,9 @@ public class MemberInfoDto {
     private String gender;
     private Integer age;
     private String status;
-    private Long wordBookId;
 
     public static MemberInfoDto of(Member member){
         return MemberInfoDto.builder()
-                .userId(member.getId())
                 .name(member.getName())
                 .nickName(member.getNickName())
                 .phoneNumber(member.getPhoneNumber())
@@ -29,7 +26,6 @@ public class MemberInfoDto {
                 .gender(Member.genderEnumToString(member.getGender()))
                 .age(member.getAge())
                 .status(Member.statusEnumToString(member.getStatus()))
-                .wordBookId(member.getWordBook().getId())
                 .build();
     }
 }

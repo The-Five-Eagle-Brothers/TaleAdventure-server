@@ -43,4 +43,11 @@ public class MemberController {
         Long memberId = tokenProvider.getUserPk(token);
         return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_OK, memberService.setMemberNameAndPhoneNumber(memberNameAndPhoneNumberDto, memberId));
     }
+
+    @PatchMapping("/update-member")
+    public ApiSuccessResponse<MemberInfoDto> updateMember(HttpServletRequest request, @RequestBody MemberInfoDto memberInfoDto){
+        String token = request.getHeader("Authorization");
+        Long memberId = tokenProvider.getUserPk(token);
+        return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_OK, memberService.updateMember(memberInfoDto, memberId));
+    }
 }

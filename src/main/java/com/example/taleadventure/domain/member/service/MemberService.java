@@ -136,5 +136,13 @@ public class MemberService {
         member.setPhoneNumber(memberNameAndPhoneNumberDto.getPhoneNumber());
         return MemberInfoDto.of(memberRepository.save(member));
     }
+
+    @Transactional
+    public MemberInfoDto updateMember(MemberInfoDto memberInfoDto, Long memberId){
+        Member member = MemberServiceUtils.findById(memberRepository, memberId);
+        member.updateMember(memberInfoDto);
+        return MemberInfoDto.of(memberRepository.save(member));
+    }
+
 }
 

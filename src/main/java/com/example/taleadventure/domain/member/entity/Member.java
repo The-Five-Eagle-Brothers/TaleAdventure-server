@@ -2,6 +2,7 @@ package com.example.taleadventure.domain.member.entity;
 
 import com.example.taleadventure.base.entity.AuditingTimeEntity;
 import com.example.taleadventure.domain.member.dto.LoginResponseDto;
+import com.example.taleadventure.domain.member.dto.MemberInfoDto;
 import com.example.taleadventure.domain.member.enummerate.Gender;
 import com.example.taleadventure.domain.member.enummerate.Status;
 import com.example.taleadventure.domain.wordbook.entity.WordBook;
@@ -46,14 +47,6 @@ public class Member extends AuditingTimeEntity {
     @JoinColumn(name = "word_book_id")
     private WordBook wordBook;
 
-    public static String statusEnumToString(Status status){
-        if(status == Status.ACTIVE){
-            return "active";
-        }else{
-            return "inactive";
-        }
-    }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -85,5 +78,31 @@ public class Member extends AuditingTimeEntity {
         }else{
             return Gender.FEMALE;
         }
+    }
+
+    public static String statusEnumToString(Status status){
+        if(status == Status.ACTIVE){
+            return "active";
+        }else{
+            return "inactive";
+        }
+    }
+
+    public static Status statusStringToEnum(String str){
+        if(str.equals("active")){
+            return Status.ACTIVE;
+        }else{
+            return Status.INACTIVE;
+        }
+    }
+
+    public void updateMember(MemberInfoDto memberInfoDto){
+        this.name = memberInfoDto.getName();
+        this.nickName = memberInfoDto.getNickName();
+        this.phoneNumber = memberInfoDto.getPhoneNumber();
+        this.email = memberInfoDto.getEmail();
+        this.gender = Member.genderStringToEnum(memberInfoDto.getGender());
+        this.age = memberInfoDto.getAge();
+        this.status = Member.statusStringToEnum(memberInfoDto.getStatus());
     }
 }
