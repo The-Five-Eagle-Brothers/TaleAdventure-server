@@ -49,7 +49,7 @@ public class MemberService {
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
         params.add("grant_type","authorization_code");
         params.add("client_id", clientId);
-        params.add("redirect_uri", "http://ec2-43-201-171-188.ap-northeast-2.compute.amazonaws.com/member/auth/kakao");
+        params.add("redirect_uri", "http://43.201.171.188/member/auth/kakao");
         params.add("code", code);
 
         HttpEntity<MultiValueMap<String, String>> kakaoTokenRequest = new HttpEntity<>(params, headers);
