@@ -18,11 +18,14 @@ import java.util.Map;
 @RestController
 @RequestMapping("/member")
 public class MemberController {
-    @Autowired
-    private MemberService memberService;
+    private final MemberService memberService;
 
-    @Autowired
-    private TokenProvider tokenProvider;
+    private final TokenProvider tokenProvider;
+
+    public MemberController(MemberService memberService, TokenProvider tokenProvider) {
+        this.memberService = memberService;
+        this.tokenProvider = tokenProvider;
+    }
 
     @GetMapping("/auth/kakao")
     public ApiSuccessResponse<LoginResponseDto> login(@RequestParam(value = "code", required = false) String code){
