@@ -28,8 +28,7 @@ public class MemberController {
     }
 
     @GetMapping("/auth/kakao")
-    public ApiSuccessResponse<LoginResponseDto> login(@RequestParam(value = "code", required = false) String code){
-        String token = memberService.getToken(code);
+    public ApiSuccessResponse<LoginResponseDto> login(@RequestParam(value = "code", required = false) String token){
         return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_OK, memberService.getUserInformation(token));
     }
 

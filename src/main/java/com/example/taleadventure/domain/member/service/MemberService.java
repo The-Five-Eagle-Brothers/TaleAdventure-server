@@ -41,38 +41,6 @@ public class MemberService {
     }
 
     @Transactional
-    public String getToken(String code) {
-        RestTemplate rt = new RestTemplate();
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
-
-        MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
-        params.add("grant_type","authorization_code");
-        params.add("client_id", clientId);
-        params.add("redirect_uri", "http://43.201.171.188/member/auth/kakao");
-        params.add("code", code);
-
-        HttpEntity<MultiValueMap<String, String>> kakaoTokenRequest = new HttpEntity<>(params, headers);
-
-        ResponseEntity<String> response = rt.exchange(
-                "https://kauth.kakao.com/oauth/token",
-                HttpMethod.POST,
-                kakaoTokenRequest,
-                String.class
-        );
-
-        ObjectMapper objectMapper = new ObjectMapper();
-        OAuthToken oauthToken = null;
-        try {
-            oauthToken = objectMapper.readValue(response.getBody(), OAuthToken.class);
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
-        }
-
-        return oauthToken.getAccess_token();
-    }
-
-    @Transactional
     public LoginResponseDto getUserInformation(String token){
         RestTemplate rt = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
