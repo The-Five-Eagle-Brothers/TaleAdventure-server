@@ -28,9 +28,6 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class MemberService {
 
-    @Value("${oauth.kakao.client-secret}")
-    private String clientSecret;
-
     @Value("${oauth.kakao.client-id}")
     private String clientId;
     private final MemberRepository memberRepository;
@@ -54,7 +51,6 @@ public class MemberService {
         params.add("client_id", clientId);
         params.add("redirect_uri", "http://43.201.171.188:8080/member/auth/kakao");
         params.add("code", code);
-        params.add("client_secret", clientSecret);
 
         HttpEntity<MultiValueMap<String, String>> kakaoTokenRequest = new HttpEntity<>(params, headers);
 
