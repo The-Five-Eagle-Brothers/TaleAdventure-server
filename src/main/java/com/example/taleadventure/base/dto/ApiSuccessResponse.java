@@ -10,16 +10,16 @@ import lombok.*;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class ApiSuccessResponse<T> {
 
-    private SuccessStatusCode successStatusCode;
+    private SuccessStatusCode statusCode;
     private String message;
     private T data;
 
     public static<T> ApiSuccessResponse<T> successResponse(SuccessResponseResult successResponseResult){
-        return new ApiSuccessResponse<>(successResponseResult.getSuccessStatusCode(), successResponseResult.getMessage(), null);
+        return new ApiSuccessResponse<>(successResponseResult.getStatusCode(), successResponseResult.getMessage(), null);
     }
 
     public static <T> ApiSuccessResponse<T> successResponse(SuccessResponseResult successResponseResult, T data){
-        return new ApiSuccessResponse<>(successResponseResult.getSuccessStatusCode(), successResponseResult.getMessage(), data);
+        return new ApiSuccessResponse<>(successResponseResult.getStatusCode(), successResponseResult.getMessage(), data);
     }
 
 }

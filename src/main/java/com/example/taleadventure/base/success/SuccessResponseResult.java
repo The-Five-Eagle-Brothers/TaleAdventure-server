@@ -19,10 +19,10 @@ public enum SuccessResponseResult {
 
     // 204 NOT_CONTENT
 
-    private final SuccessStatusCode successStatusCode;
+    private final SuccessStatusCode statusCode;
     private final String message;
 
     private int getStatus(){
-        return successStatusCode.getStatus();
+        return statusCode.getStatus();
     }
 }
