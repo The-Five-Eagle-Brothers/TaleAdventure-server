@@ -60,9 +60,11 @@ public class Member extends AuditingTimeEntity {
 
     public void setAge(Integer age){
         this.age = age;
-
     }
 
+    public void updateNickName(String nickName){
+        this.nickName = nickName;
+    }
     public void setWordBook(WordBook wordBook) {
         this.wordBook = wordBook;
     }

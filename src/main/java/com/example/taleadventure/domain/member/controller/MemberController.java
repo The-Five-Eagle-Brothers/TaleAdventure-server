@@ -34,11 +34,11 @@ public class MemberController {
         return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_OK, memberService.setMemberAge(age.get("age"), token));
     }
 
-    @Operation(description = "[인증] 이름과 나이 설정 페이지 - 초기 유저 이름과 나이 설정하기")
-    @PatchMapping("/set/name-phone-number")
-    public ApiSuccessResponse<MemberInfoDto> setNameAndPhoneNumber(HttpServletRequest request, @RequestBody MemberNameAndPhoneNumberDto memberNameAndPhoneNumberDto){
+    @Operation(description = "[인증] 이름과 나이 설정 페이지 - 초기 유저 닉네임 설정하기")
+    @PatchMapping("/set/nickname")
+    public ApiSuccessResponse<MemberInfoDto> setNickName(HttpServletRequest request, @RequestBody Map<String,String> nickName){
         String token = JwtHeaderUtil.getAccessToken(request);
-        return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_OK, memberService.setMemberNameAndPhoneNumber(memberNameAndPhoneNumberDto, token));
+        return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_OK, memberService.setNickName(nickName.get("nickName"), token));
     }
 
     @Operation(description = "[인증] 회원 정보 수정 페이지 - 회원 정보 수정하기")

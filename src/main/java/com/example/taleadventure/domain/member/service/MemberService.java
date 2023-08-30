@@ -43,11 +43,10 @@ public class MemberService {
     }
 
     @Transactional
-    public MemberInfoDto setMemberNameAndPhoneNumber (MemberNameAndPhoneNumberDto memberNameAndPhoneNumberDto, String token){
+    public MemberInfoDto setNickName (String nickName, String token){
         Long memberId = authService.getMemberId(token);
         Member member = MemberServiceUtils.findById(memberRepository, memberId);
-        member.setName(memberNameAndPhoneNumberDto.getName());
-        member.setPhoneNumber(memberNameAndPhoneNumberDto.getPhoneNumber());
+        member.updateNickName(nickName);
         return MemberInfoDto.of(memberRepository.save(member));
     }
 
