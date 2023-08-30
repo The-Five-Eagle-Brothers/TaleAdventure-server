@@ -1,6 +1,6 @@
 package com.example.taleadventure.domain.member.controller;
 
-import com.example.taleadventure.base.config.login.TokenProvider;
+import com.example.taleadventure.base.config.login.JwtHeaderUtil;
 import com.example.taleadventure.base.dto.ApiExceptionResponse;
 import com.example.taleadventure.base.dto.ApiSuccessResponse;
 import com.example.taleadventure.base.error.exception.TaleAdventureException;
@@ -23,50 +23,36 @@ import java.util.Map;
 public class MemberController {
     private final MemberService memberService;
 
-    private final TokenProvider tokenProvider;
-
-    public MemberController(MemberService memberService, TokenProvider tokenProvider) {
+    public MemberController(MemberService memberService) {
         this.memberService = memberService;
-        this.tokenProvider = tokenProvider;
-    }
-
-    @Operation(description = "[인증] 로그인 페이지 - 엑세스 토큰을 통한 로그인하기")
-    @GetMapping("/auth/kakao")
-    public ApiSuccessResponse<LoginResponseDto> login(HttpServletRequest request){
-        String token = request.getHeader("Authorization");
-        return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_OK, memberService.getUserInformation(token));
     }
 
     @Operation(description = "[인증] 나이 설정 페이지 - 초기 유저 나이 설정하기")
     @PatchMapping("/set/age")
     public ApiSuccessResponse<MemberInfoDto> setAge(HttpServletRequest request, @RequestBody Map<String,Integer> age){
-        String token = request.getHeader("Authorization");
-        Long memberId = tokenProvider.getUserPk(token);
-        return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_OK, memberService.setMemberAge(age.get("age"), memberId));
+        String token = JwtHeaderUtil.getAccessToken(request);
+        return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_OK, memberService.setMemberAge(age.get("age"), token));
     }
 
     @Operation(description = "[인증] 이름과 나이 설정 페이지 - 초기 유저 이름과 나이 설정하기")
     @PatchMapping("/set/name-phone-number")
     public ApiSuccessResponse<MemberInfoDto> setNameAndPhoneNumber(HttpServletRequest request, @RequestBody MemberNameAndPhoneNumberDto memberNameAndPhoneNumberDto){
-        String token = request.getHeader("Authorization");
-        Long memberId = tokenProvider.getUserPk(token);
-        return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_OK, memberService.setMemberNameAndPhoneNumber(memberNameAndPhoneNumberDto, memberId));
+        String token = JwtHeaderUtil.getAccessToken(request);
+        return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_OK, memberService.setMemberNameAndPhoneNumber(memberNameAndPhoneNumberDto, token));
     }
 
     @Operation(description = "[인증] 회원 정보 수정 페이지 - 회원 정보 수정하기")
     @PatchMapping("/update-member")
     public ApiSuccessResponse<MemberInfoDto> updateMember(HttpServletRequest request, @RequestBody MemberInfoDto memberInfoDto){
-        String token = request.getHeader("Authorization");
-        Long memberId = tokenProvider.getUserPk(token);
-        return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_OK, memberService.updateMember(memberInfoDto, memberId));
+        String token = JwtHeaderUtil.getAccessToken(request);
+        return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_OK, memberService.updateMember(memberInfoDto, token));
     }
 
     @Operation(description = "[인증] 회원 탈퇴 페이지 - 회원 탈퇴하기")
     @DeleteMapping("/delete-member")
     public ApiSuccessResponse<String> deleteMember(HttpServletRequest request){
-        String token = request.getHeader("Authorization");
-        Long memberId = tokenProvider.getUserPk(token);
-        memberService.deleteMember(memberId);
+        String token = JwtHeaderUtil.getAccessToken(request);
+        memberService.deleteMember(token);
         return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_DELETE_MEMBER);
     }
 }

@@ -39,6 +39,9 @@ public class Member extends AuditingTimeEntity {
 
     private Integer age;    // 따로 받자
 
+    @Column(nullable = false)
+    private String socialId;
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Status status;

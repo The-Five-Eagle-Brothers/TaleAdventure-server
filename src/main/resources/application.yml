@@ -28,12 +28,15 @@ spring:
         format_sql: true
         default_batch_fetch_size: 1000
 
-#jwt:
-#  secret-key: ${JWT_SECRET}
-
 oauth:
   kakao:
     client-id: ${KAKAO_CLIENT_ID}
     url:
       auth: https://kauth.kakao.com
       api: https://kapi.kakao.com
+
+
+app:
+  auth:
+    tokenExpiry: ${TOKEN_EXPIRY}
+    tokenSecret: ${JWT_SECRET}
