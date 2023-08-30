@@ -42,14 +42,14 @@ public class MemberController {
     }
 
     @Operation(description = "[인증] 회원 정보 수정 페이지 - 회원 정보 수정하기")
-    @PatchMapping("/update-member")
+    @PatchMapping("/update")
     public ApiSuccessResponse<MemberInfoDto> updateMember(HttpServletRequest request, @RequestBody MemberInfoDto memberInfoDto){
         String token = JwtHeaderUtil.getAccessToken(request);
         return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_OK, memberService.updateMember(memberInfoDto, token));
     }
 
     @Operation(description = "[인증] 회원 탈퇴 페이지 - 회원 탈퇴하기")
-    @DeleteMapping("/delete-member")
+    @DeleteMapping("/delete")
     public ApiSuccessResponse<String> deleteMember(HttpServletRequest request){
         String token = JwtHeaderUtil.getAccessToken(request);
         memberService.deleteMember(token);
