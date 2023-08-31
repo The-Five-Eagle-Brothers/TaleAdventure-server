@@ -11,9 +11,7 @@ import lombok.*;
 public class LoginResponseDto {
 
     private Long userId;
-    private String name;
     private String nickName;
-    private String phoneNumber;
     private String email;
     private String gender;
     private Integer age;
@@ -24,9 +22,7 @@ public class LoginResponseDto {
     public static LoginResponseDto of(Member member, String token){
         return LoginResponseDto.builder()
                 .userId(member.getId())
-                .name(member.getName())
                 .nickName(member.getNickName())
-                .phoneNumber(member.getPhoneNumber())
                 .email(member.getEmail())
                 .gender(Member.genderEnumToString(member.getGender()))
                 .age(member.getAge())

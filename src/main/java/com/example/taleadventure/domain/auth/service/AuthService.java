@@ -7,12 +7,9 @@ import com.example.taleadventure.base.error.ErrorResponseResult;
 import com.example.taleadventure.base.error.exception.NotFoundException;
 import com.example.taleadventure.domain.auth.dto.AuthRequest;
 import com.example.taleadventure.domain.auth.dto.AuthResponse;
-import com.example.taleadventure.domain.member.dto.LoginResponseDto;
 import com.example.taleadventure.domain.member.entity.Member;
 import com.example.taleadventure.domain.member.repository.MemberRepository;
-import com.example.taleadventure.domain.member.service.MemberService;
 import io.jsonwebtoken.Claims;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

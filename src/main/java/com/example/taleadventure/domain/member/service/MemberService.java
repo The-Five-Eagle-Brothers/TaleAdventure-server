@@ -26,12 +26,7 @@ import org.springframework.web.client.RestTemplate;
 @Service
 @RequiredArgsConstructor
 public class MemberService {
-
-    @Value("${oauth.kakao.client-id}")
-    private String clientId;
     private final MemberRepository memberRepository;
-
-    private final WordBookRepository wordBookRepository;
     private final AuthService authService;
 
     @Transactional

@@ -23,12 +23,8 @@ public class Member extends AuditingTimeEntity {
     @Column(name = "member_id", nullable = false)
     private Long id;
 
-    private String name;    // 따로 받자
-
     @Column(nullable = false)
     private String nickName;
-
-    private String phoneNumber; // 따로 받자
 
     @Column(nullable = false)
     private String email;
@@ -37,7 +33,7 @@ public class Member extends AuditingTimeEntity {
     @Column(nullable = false)
     private Gender gender;
 
-    private Integer age;    // 따로 받자
+    private Integer age;
 
     @Column(nullable = false)
     private String socialId;
@@ -49,14 +45,6 @@ public class Member extends AuditingTimeEntity {
     @OneToOne
     @JoinColumn(name = "word_book_id")
     private WordBook wordBook;
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
 
     public void setAge(Integer age){
         this.age = age;
@@ -102,9 +90,7 @@ public class Member extends AuditingTimeEntity {
     }
 
     public void updateMember(MemberInfoDto memberInfoDto){
-        this.name = memberInfoDto.getName();
         this.nickName = memberInfoDto.getNickName();
-        this.phoneNumber = memberInfoDto.getPhoneNumber();
         this.email = memberInfoDto.getEmail();
         this.gender = Member.genderStringToEnum(memberInfoDto.getGender());
         this.age = memberInfoDto.getAge();

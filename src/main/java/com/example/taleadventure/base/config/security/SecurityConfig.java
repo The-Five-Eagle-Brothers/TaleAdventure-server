@@ -4,7 +4,6 @@ import com.example.taleadventure.base.config.login.AuthTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
-import org.springframework.security.config.annotation.web.WebSecurityConfigurer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -21,9 +20,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception{
-        web.ignoring().antMatchers("/v2/api-docs","/configuration/**","/swagger*/**",
-                "/webjars/**","/auth/**","/v3/api-docs/**",
-                "/swagger-ui/**");
+        web.ignoring().antMatchers("/auth/**","/v2/api-docs","/configuration/**","/swagger*/**","/webjars/**","/v3/api-docs/**","/swagger-ui/**");
     }
 
     @Override

@@ -1,17 +1,12 @@
 package com.example.taleadventure.domain.member.controller;
 
 import com.example.taleadventure.base.config.login.JwtHeaderUtil;
-import com.example.taleadventure.base.dto.ApiExceptionResponse;
 import com.example.taleadventure.base.dto.ApiSuccessResponse;
-import com.example.taleadventure.base.error.exception.TaleAdventureException;
 import com.example.taleadventure.base.success.SuccessResponseResult;
-import com.example.taleadventure.domain.member.dto.LoginResponseDto;
 import com.example.taleadventure.domain.member.dto.MemberInfoDto;
-import com.example.taleadventure.domain.member.dto.MemberNameAndPhoneNumberDto;
 import com.example.taleadventure.domain.member.service.MemberService;
 import io.swagger.annotations.Api;
 import io.swagger.v3.oas.annotations.Operation;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
