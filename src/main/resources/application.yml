@@ -40,3 +40,15 @@ app:
   auth:
     tokenExpiry: ${TOKEN_EXPIRY}
     tokenSecret: ${JWT_SECRET}
+
+cloud:
+  aws:
+    credentials:
+      accessKey: ${AWS_ACCESS_KEY_ID}
+      secretKey: ${AWS_SECRET_ACCESS_KEY}
+    s3:
+      bucket: sw-contest-s3-bucket
+    region:
+      static: ap-northeast-2
+    stack:
+      auto: false
