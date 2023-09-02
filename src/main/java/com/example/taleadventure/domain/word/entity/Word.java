@@ -1,6 +1,7 @@
 package com.example.taleadventure.domain.word.entity;
 
 import com.example.taleadventure.base.entity.AuditingTimeEntity;
+import com.example.taleadventure.domain.chapter.entity.Chapter;
 import com.example.taleadventure.domain.talebook.entity.TaleBook;
 import lombok.*;
 
@@ -33,5 +34,9 @@ public class Word extends AuditingTimeEntity {
 
     @Column(nullable = false)
     private Boolean bookMark;
+
+    @ManyToOne
+    @JoinColumn(name = "chapter_id")
+    private Chapter chapter;
 
 }
