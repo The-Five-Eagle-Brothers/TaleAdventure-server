@@ -5,7 +5,7 @@ import com.example.taleadventure.base.success.SuccessResponseResult;
 import com.example.taleadventure.domain.auth.dto.AuthRequest;
 import com.example.taleadventure.domain.auth.dto.AuthResponse;
 import com.example.taleadventure.domain.auth.service.AuthService;
-import com.example.taleadventure.domain.member.dto.LoginResponseDto;
+
 import io.swagger.annotations.Api;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
