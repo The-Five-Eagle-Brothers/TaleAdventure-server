@@ -1,11 +1,9 @@
 package com.example.taleadventure.domain.member.entity;
 
 import com.example.taleadventure.base.entity.AuditingTimeEntity;
-import com.example.taleadventure.domain.member.dto.LoginResponseDto;
 import com.example.taleadventure.domain.member.dto.MemberInfoDto;
 import com.example.taleadventure.domain.member.enummerate.Gender;
 import com.example.taleadventure.domain.member.enummerate.Status;
-import com.example.taleadventure.domain.wordbook.entity.WordBook;
 import lombok.*;
 
 import javax.persistence.*;
@@ -42,9 +40,6 @@ public class Member extends AuditingTimeEntity {
     @Column(nullable = false)
     private Status status;
 
-    @OneToOne
-    @JoinColumn(name = "word_book_id")
-    private WordBook wordBook;
 
     public void setAge(Integer age){
         this.age = age;
@@ -52,9 +47,6 @@ public class Member extends AuditingTimeEntity {
 
     public void updateNickName(String nickName){
         this.nickName = nickName;
-    }
-    public void setWordBook(WordBook wordBook) {
-        this.wordBook = wordBook;
     }
 
     public static String genderEnumToString(Gender gender){

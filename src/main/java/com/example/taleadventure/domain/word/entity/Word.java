@@ -25,4 +25,13 @@ public class Word extends AuditingTimeEntity {
     @Column(nullable = false)
     private String mean;
 
+    @Column(nullable = false)
+    private String sentence;
+
+    @Column(nullable = false)
+    private String example;
+
+    @Column(nullable = false)
+    private Boolean bookMark;
+
 }

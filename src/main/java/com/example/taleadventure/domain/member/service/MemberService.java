@@ -2,26 +2,11 @@ package com.example.taleadventure.domain.member.service;
 
 import com.example.taleadventure.domain.auth.service.AuthService;
 import com.example.taleadventure.domain.member.dto.MemberInfoDto;
-import com.example.taleadventure.domain.member.dto.MemberNameAndPhoneNumberDto;
 import com.example.taleadventure.domain.member.entity.Member;
-import com.example.taleadventure.domain.member.enummerate.Status;
 import com.example.taleadventure.domain.member.repository.MemberRepository;
-import com.example.taleadventure.domain.wordbook.entity.WordBook;
-import com.example.taleadventure.domain.wordbook.repository.WordBookRepository;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.client.RestTemplate;
 
 @Service
 @RequiredArgsConstructor

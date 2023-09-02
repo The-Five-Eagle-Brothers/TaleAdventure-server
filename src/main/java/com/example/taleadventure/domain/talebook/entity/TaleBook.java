@@ -27,11 +27,4 @@ public class TaleBook {
     @Column(nullable = false)
     private Category category;
 
-    @OneToMany
-    @JoinColumn(name = "tale_book_id")
-    private List<Word> words = new ArrayList<>();
-
-    /*@OneToMany
-    @JoinColumn(name = "day_id")
-    private List<Word> words = new ArrayList<>();*/
 }
