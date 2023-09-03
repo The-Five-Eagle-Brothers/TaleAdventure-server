@@ -1,14 +1,16 @@
 package com.example.taleadventure.domain.talebook.dto;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-@ToString
-@Getter
 @Builder
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 public class TaleBookRequest {
     private String name;
-    private String category;
+    private String categoru;
     private String imageUrl;
 }
