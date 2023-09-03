@@ -49,7 +49,7 @@ public class Member extends AuditingTimeEntity {
     }
 
     public void setDay(){
-        this.day = 0;
+        this.day = 1;
     }
 
     public void updateNickName(String nickName){

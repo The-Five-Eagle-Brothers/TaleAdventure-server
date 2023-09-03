@@ -22,7 +22,7 @@ public class MemberInfoDto {
                 .email(member.getEmail())
                 .gender(Member.genderEnumToString(member.getGender()))
                 .age(member.getAge())
-                .age(member.getDay())
+                .day(member.getDay())
                 .status(Member.statusEnumToString(member.getStatus()))
                 .build();
     }

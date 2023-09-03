@@ -14,7 +14,8 @@ public enum SuccessResponseResult {
     SUCCESS_OK(OK, ""),
     SUCCESS_DELETE_MEMBER(OK, "회원 탈퇴가 완료되었습니다."),
     // 201 CREATED
-    SUCCESS_CREATED(CREATED, "");
+    SUCCESS_CREATED(CREATED, ""),
+    SUCCESS_INCREASE_DAY(OK, "Day가 1일 증가됐습니다.");
     // 202 ACCEPTED
 
     // 204 NOT_CONTENT

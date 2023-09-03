@@ -56,6 +56,6 @@ public class MemberController {
     public ApiSuccessResponse<String> increaseDay(HttpServletRequest request){
         String token = JwtHeaderUtil.getAccessToken(request);
         memberService.increaseDay(token);
-        return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_OK);
+        return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_INCREASE_DAY);
     }
 }
