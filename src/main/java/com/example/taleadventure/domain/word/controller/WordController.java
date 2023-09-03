@@ -6,6 +6,7 @@ import com.example.taleadventure.base.success.SuccessResponseResult;
 import com.example.taleadventure.domain.chapter.dto.ChapterInfoDto;
 import com.example.taleadventure.domain.chapter.dto.ChapterRequest;
 import com.example.taleadventure.domain.chapter.service.ChapterService;
+import com.example.taleadventure.domain.word.dto.WordInfoDto;
 import com.example.taleadventure.domain.word.dto.WordRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
