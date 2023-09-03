@@ -1,5 +1,6 @@
 package com.example.taleadventure.domain.talebook.entity;
 
+import com.example.taleadventure.domain.member.enummerate.Gender;
 import com.example.taleadventure.domain.talebook.enummerate.Category;
 import com.example.taleadventure.domain.word.entity.Word;
 import lombok.*;
@@ -29,4 +30,19 @@ public class TaleBook {
 
     private String imageUrl;
 
+    public static Category categoryStringToEnum(String str){
+        if(str.equals("korea")){
+            return Category.KOREA;
+        }else{
+            return Category.FOREIGN;
+        }
+    }
+
+    public static TaleBook newInstance(String name, String category, String imageUrl){
+        return TaleBook.builder()
+                .name(name)
+                .category(TaleBook.categoryStringToEnum(category))
+                .imageUrl(imageUrl)
+                .build();
+    }
 }
