@@ -23,6 +23,9 @@ public class Chapter extends AuditingTimeEntity {
     @Column(nullable = false)
     private String title;
 
+    @Column(nullable = false)
+    private String imageUrl;
+
     @ManyToOne
     @JoinColumn(name = "tale_book_id")
     private TaleBook taleBook;
