@@ -30,4 +30,11 @@ public class Chapter extends AuditingTimeEntity {
     @JoinColumn(name = "tale_book_id")
     private TaleBook taleBook;
 
+    public static Chapter newInstance(String title, TaleBook taleBook, String imageUrl){
+        return Chapter.builder()
+                .title(title)
+                .imageUrl(imageUrl)
+                .taleBook(taleBook)
+                .build();
+    }
 }

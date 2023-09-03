@@ -15,7 +15,8 @@ public class ChapterRequest {
     private String title;
     private Long taleBookId;
 
-    public Chapter toChapterEntity(String url){
-        return Chapter.newInstance(title, taleBookId, url);
+    public Chapter toChapterEntity(TaleBook taleBook, String url){
+        return Chapter.newInstance(title, taleBook, url);
     }
+
 }
