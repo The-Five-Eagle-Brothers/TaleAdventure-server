@@ -5,6 +5,7 @@ import com.example.taleadventure.base.dto.ApiSuccessResponse;
 import com.example.taleadventure.base.success.SuccessResponseResult;
 import com.example.taleadventure.domain.chapter.dto.ChapterInfoDto;
 import com.example.taleadventure.domain.chapter.dto.ChapterRequest;
+import com.example.taleadventure.domain.chapter.service.ChapterService;
 import com.example.taleadventure.domain.talebook.dto.TaleBookInfoDto;
 import com.example.taleadventure.domain.talebook.dto.TaleBookRequest;
 import com.example.taleadventure.domain.talebook.service.TaleBookService;
