@@ -3,6 +3,7 @@ package com.example.taleadventure.domain.chapter.controller;
 import com.example.taleadventure.base.config.login.JwtHeaderUtil;
 import com.example.taleadventure.base.dto.ApiSuccessResponse;
 import com.example.taleadventure.base.success.SuccessResponseResult;
+import com.example.taleadventure.domain.chapter.dto.ChapterInfoDto;
 import com.example.taleadventure.domain.chapter.dto.ChapterRequest;
 import com.example.taleadventure.domain.talebook.dto.TaleBookInfoDto;
 import com.example.taleadventure.domain.talebook.dto.TaleBookRequest;
