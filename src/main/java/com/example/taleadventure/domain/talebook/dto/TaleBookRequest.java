@@ -13,9 +13,8 @@ import lombok.NoArgsConstructor;
 public class TaleBookRequest {
     private String name;
     private String category;
-    private String imageUrl;
 
-    public TaleBook toTaleBookEntity(){
-        return TaleBook.newInstance(name, category, imageUrl);
+    public TaleBook toTaleBookEntity(String url){
+        return TaleBook.newInstance(name, category, url);
     }
 }
