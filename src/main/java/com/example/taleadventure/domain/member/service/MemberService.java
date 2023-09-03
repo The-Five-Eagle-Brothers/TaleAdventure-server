@@ -44,5 +44,12 @@ public class MemberService {
         memberRepository.delete(MemberServiceUtils.findById(memberRepository, memberId));
     }
 
+    @Transactional
+    public void increaseDay(String token){
+        Long memberId = authService.getMemberId(token);
+        Member member = MemberServiceUtils.findById(memberRepository, memberId);
+        member.updateDay();
+    }
+
 }
 

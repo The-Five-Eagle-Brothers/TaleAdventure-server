@@ -36,6 +36,7 @@ public class AuthService {
         AuthToken appToken = authTokenProvider.createUserAppToken(socialId);
 
         if(member == null){
+            kakaoMember.setDay();
             memberRepository.save(kakaoMember);
         }
 

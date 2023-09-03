@@ -36,6 +36,9 @@ public class Member extends AuditingTimeEntity {
     @Column(nullable = false)
     private String socialId;
 
+    @Column(nullable = false)
+    private Integer day;
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Status status;
@@ -45,8 +48,16 @@ public class Member extends AuditingTimeEntity {
         this.age = age;
     }
 
+    public void setDay(){
+        this.day = 0;
+    }
+
     public void updateNickName(String nickName){
         this.nickName = nickName;
+    }
+
+    public void updateDay(){
+        this.day++;
     }
 
     public static String genderEnumToString(Gender gender){

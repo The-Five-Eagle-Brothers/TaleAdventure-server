@@ -13,6 +13,7 @@ public class MemberInfoDto {
     private String email;
     private String gender;
     private Integer age;
+    private Integer day;
     private String status;
 
     public static MemberInfoDto of(Member member){
@@ -21,6 +22,7 @@ public class MemberInfoDto {
                 .email(member.getEmail())
                 .gender(Member.genderEnumToString(member.getGender()))
                 .age(member.getAge())
+                .age(member.getDay())
                 .status(Member.statusEnumToString(member.getStatus()))
                 .build();
     }

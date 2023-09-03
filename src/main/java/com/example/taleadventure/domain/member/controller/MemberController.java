@@ -50,4 +50,12 @@ public class MemberController {
         memberService.deleteMember(token);
         return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_DELETE_MEMBER);
     }
+
+    @Operation(description = "[인증] 홈 페이지 - 데일리 어드벤처 Day 갱신하기")
+    @GetMapping("/increase/day")
+    public ApiSuccessResponse<String> increaseDay(HttpServletRequest request){
+        String token = JwtHeaderUtil.getAccessToken(request);
+        memberService.increaseDay(token);
+        return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_OK);
+    }
 }

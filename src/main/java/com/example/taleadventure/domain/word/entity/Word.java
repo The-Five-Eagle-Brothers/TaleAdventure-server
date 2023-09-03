@@ -35,6 +35,8 @@ public class Word extends AuditingTimeEntity {
     @Column(nullable = false)
     private Boolean bookMark;
 
+    private String imageUrl;
+
     @ManyToOne
     @JoinColumn(name = "chapter_id")
     private Chapter chapter;

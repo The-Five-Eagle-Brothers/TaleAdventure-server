@@ -27,4 +27,6 @@ public class TaleBook {
     @Column(nullable = false)
     private Category category;
 
+    private String imageUrl;
+
 }
