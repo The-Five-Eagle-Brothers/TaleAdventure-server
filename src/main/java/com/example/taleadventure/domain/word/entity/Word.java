@@ -42,4 +42,15 @@ public class Word extends AuditingTimeEntity {
     @JoinColumn(name = "chapter_id")
     private Chapter chapter;
 
+    public static Word newInstance(String name, String mean, String sentence, String example, Chapter chapter, String imageUrl){
+        return Word.builder()
+                .name(name)
+                .mean(mean)
+                .sentence(sentence)
+                .example(example)
+                .chapter(chapter)
+                .imageUrl(imageUrl)
+                .build();
+    }
+
 }
