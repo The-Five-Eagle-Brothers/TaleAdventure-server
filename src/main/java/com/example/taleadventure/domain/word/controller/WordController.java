@@ -8,6 +8,7 @@ import com.example.taleadventure.domain.chapter.dto.ChapterRequest;
 import com.example.taleadventure.domain.chapter.service.ChapterService;
 import com.example.taleadventure.domain.word.dto.WordInfoDto;
 import com.example.taleadventure.domain.word.dto.WordRequest;
+import com.example.taleadventure.domain.word.service.WordService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
