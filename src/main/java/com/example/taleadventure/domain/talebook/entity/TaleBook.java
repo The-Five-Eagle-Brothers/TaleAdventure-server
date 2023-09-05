@@ -28,7 +28,11 @@ public class TaleBook {
     @Column(nullable = false)
     private Category category;
 
-    private String imageUrl;
+    private String libraryImageUrl;
+
+    private String ChapterImageUrl;
+
+    private String WordBookImageUrl;
 
     public static Category categoryStringToEnum(String str){
         if(str.equals("korea")){
@@ -38,11 +42,13 @@ public class TaleBook {
         }
     }
 
-    public static TaleBook newInstance(String name, String category, String imageUrl){
+    public static TaleBook newInstance(String name, String category, String libraryImageUrl, String chapterImageUrl, String wordBookImageUrl){
         return TaleBook.builder()
                 .name(name)
                 .category(TaleBook.categoryStringToEnum(category))
-                .imageUrl(imageUrl)
+                .libraryImageUrl(libraryImageUrl)
+                .ChapterImageUrl(chapterImageUrl)
+                .WordBookImageUrl(wordBookImageUrl)
                 .build();
     }
 }

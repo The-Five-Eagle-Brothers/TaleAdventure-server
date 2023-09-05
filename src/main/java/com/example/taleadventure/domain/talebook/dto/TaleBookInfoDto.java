@@ -15,14 +15,18 @@ public class TaleBookInfoDto {
     private Long id;
     private String name;
     private Category category;
-    private String imageUrl;
+    private String libraryImageUrl;
+    private String chapterImageUrl;
+    private String wordBookImageUrl;
 
     public static TaleBookInfoDto of(TaleBook taleBook){
         return TaleBookInfoDto.builder()
                 .id(taleBook.getId())
                 .name(taleBook.getName())
                 .category(taleBook.getCategory())
-                .imageUrl(taleBook.getImageUrl())
+                .libraryImageUrl(taleBook.getLibraryImageUrl())
+                .chapterImageUrl(taleBook.getChapterImageUrl())
+                .wordBookImageUrl(taleBook.getWordBookImageUrl())
                 .build();
     }
 }

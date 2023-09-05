@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -23,8 +24,8 @@ public class TaleBookController {
     private final TaleBookService taleBookService;
 
     @PostMapping("/save")
-    public ApiSuccessResponse<TaleBookInfoDto> saveTaleBook(HttpServletRequest request, TaleBookRequest taleBookRequest, MultipartFile multipartFile){
+    public ApiSuccessResponse<TaleBookInfoDto> saveTaleBook(HttpServletRequest request, TaleBookRequest taleBookRequest, List<MultipartFile> multipartFiles){
         String token = JwtHeaderUtil.getAccessToken(request);
-        return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_CREATED, taleBookService.saveTaleBook(taleBookRequest, multipartFile));
+        return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_CREATED, taleBookService.saveTaleBook(taleBookRequest, multipartFiles));
     }
 }

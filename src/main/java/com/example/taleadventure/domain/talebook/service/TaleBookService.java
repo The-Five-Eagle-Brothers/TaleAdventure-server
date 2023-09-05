@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 
 @RequiredArgsConstructor
 @Service
@@ -20,10 +21,12 @@ public class TaleBookService {
     private final TaleBookRepository taleBookRepository;
 
     @Transactional
-    public TaleBookInfoDto saveTaleBook(TaleBookRequest taleBookRequest, MultipartFile multipartFile){
+    public TaleBookInfoDto saveTaleBook(TaleBookRequest taleBookRequest, List<MultipartFile> multipartFile){
         try {
-            String imageUrl = s3Upload.upload(multipartFile);
-            TaleBook taleBook = taleBookRepository.save(taleBookRequest.toTaleBookEntity(imageUrl));
+            String libraryImageUrl = s3Upload.upload(multipartFile.get(0));
+            String chapterImageUrl = s3Upload.upload(multipartFile.get(1));
+            String wordBookImageUrl = s3Upload.upload(multipartFile.get(2));
+            TaleBook taleBook = taleBookRepository.save(taleBookRequest.toTaleBookEntity(libraryImageUrl, chapterImageUrl, wordBookImageUrl));
             return TaleBookInfoDto.of(taleBook);
         } catch (IOException e) {
             throw new RuntimeException(e);
