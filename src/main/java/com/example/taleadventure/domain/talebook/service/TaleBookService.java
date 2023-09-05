@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -31,5 +32,14 @@ public class TaleBookService {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Transactional
+    public List<TaleBookInfoDto> retrieveTaleBook(){
+        List<TaleBook> taleBooks = TaleBookServiceUtils.findAll(taleBookRepository);
+        return taleBooks.stream()
+                .map(taleBook -> {
+                return TaleBookInfoDto.of(taleBook);
+                }).collect(Collectors.toList());
     }
 }

@@ -7,10 +7,7 @@ import com.example.taleadventure.domain.talebook.dto.TaleBookInfoDto;
 import com.example.taleadventure.domain.talebook.dto.TaleBookRequest;
 import com.example.taleadventure.domain.talebook.service.TaleBookService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,5 +24,11 @@ public class TaleBookController {
     public ApiSuccessResponse<TaleBookInfoDto> saveTaleBook(HttpServletRequest request, TaleBookRequest taleBookRequest, List<MultipartFile> multipartFiles){
         String token = JwtHeaderUtil.getAccessToken(request);
         return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_CREATED, taleBookService.saveTaleBook(taleBookRequest, multipartFiles));
+    }
+
+    @GetMapping("/retrieve")
+    public ApiSuccessResponse<List<TaleBookInfoDto>> retrieveTaleBook(HttpServletRequest request){
+        String token = JwtHeaderUtil.getAccessToken(request);
+        return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_CREATED, taleBookService.retrieveTaleBook());
     }
 }
