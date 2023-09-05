@@ -1,8 +1,9 @@
-package com.example.taleadventure.domain.home;
+package com.example.taleadventure.domain.home.controller;
 
 import com.example.taleadventure.base.config.login.JwtHeaderUtil;
 import com.example.taleadventure.base.dto.ApiSuccessResponse;
 import com.example.taleadventure.base.success.SuccessResponseResult;
+import com.example.taleadventure.domain.home.dto.HomeResponseDto;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +21,7 @@ public class HomeController {
 
     @Operation(description = "[인증] 홈 페이지 - 홈 뷰 보기")
     @GetMapping("/me")
-    public ApiSuccessResponse<HomeResponse> showHome(HttpServletRequest request){
+    public ApiSuccessResponse<HomeResponseDto> showHome(HttpServletRequest request){
         String token = JwtHeaderUtil.getAccessToken(request);
         return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_SEARCH_MY_HOME_VIEW, homeService.showHome(token););
     }
