@@ -12,6 +12,7 @@ import static com.example.taleadventure.base.success.SuccessStatusCode.OK;
 public enum SuccessResponseResult {
     // 200 OK
     SUCCESS_OK(OK, ""),
+    SUCCESS_SEARCH_MY_HOME_VIEW(OK, "홈 뷰를 조회했습니다."),
     SUCCESS_DELETE_MEMBER(OK, "회원 탈퇴가 완료되었습니다."),
     // 201 CREATED
     SUCCESS_CREATED(CREATED, "성공적으로 생성되었습니다."),
