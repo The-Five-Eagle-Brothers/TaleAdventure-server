@@ -4,6 +4,7 @@ import com.example.taleadventure.base.config.login.JwtHeaderUtil;
 import com.example.taleadventure.base.dto.ApiSuccessResponse;
 import com.example.taleadventure.base.success.SuccessResponseResult;
 import com.example.taleadventure.domain.home.dto.HomeResponseDto;
+import com.example.taleadventure.domain.home.service.HomeService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +24,6 @@ public class HomeController {
     @GetMapping("/me")
     public ApiSuccessResponse<HomeResponseDto> showHome(HttpServletRequest request){
         String token = JwtHeaderUtil.getAccessToken(request);
-        return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_SEARCH_MY_HOME_VIEW, homeService.showHome(token););
+        return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_SEARCH_MY_HOME_VIEW, homeService.showHome(token));
     }
 }
