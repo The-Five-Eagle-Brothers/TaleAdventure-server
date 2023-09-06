@@ -30,9 +30,9 @@ public class TaleBook {
 
     private String libraryImageUrl;
 
-    private String ChapterImageUrl;
+    private String chapterImageUrl;
 
-    private String WordBookImageUrl;
+    private String wordBookImageUrl;
 
     public static Category categoryStringToEnum(String str){
         if(str.equals("korea")){
@@ -47,8 +47,8 @@ public class TaleBook {
                 .name(name)
                 .category(TaleBook.categoryStringToEnum(category))
                 .libraryImageUrl(libraryImageUrl)
-                .ChapterImageUrl(chapterImageUrl)
-                .WordBookImageUrl(wordBookImageUrl)
+                .chapterImageUrl(chapterImageUrl)
+                .wordBookImageUrl(wordBookImageUrl)
                 .build();
     }
 }
