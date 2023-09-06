@@ -36,8 +36,9 @@ public class WordController {
     }
 
     @PatchMapping("/update/book-mark")
-    public ApiSuccessResponse<List<WordInfoDto>> updateBookMark(HttpServletRequest request, List<WordInfoDto> wordInfoDtos){
+    public ApiSuccessResponse<String> updateBookMark(HttpServletRequest request, List<WordInfoDto> wordInfoDtos){
         String token = JwtHeaderUtil.getAccessToken(request);
-        return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_UPDATE_WORD_BOOKMARK, wordService.updateBookMark(wordInfoDtos, token));
+        wordService.updateBookMark(wordInfoDtos, token);
+        return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_UPDATE_WORD_BOOKMARK);
     }
 }

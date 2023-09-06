@@ -48,4 +48,13 @@ public class WordService {
                     return WordInfoDto.of(word);
                 }).collect(Collectors.toList());
     }
+
+    @Transactional
+    public void updateBookMark(List<WordInfoDto> wordInfoDtos, String token){
+        Long memberId = authService.getMemberId(token);
+        for(int i = 0; i < wordInfoDtos.size(); i++){
+            Word word = WordServiceUtils.findById(wordRepository, wordInfoDtos.get(i).getId());
+            word.updateBookMark(wordInfoDtos.get(i).getBookMark());
+        }
+    }
 }
