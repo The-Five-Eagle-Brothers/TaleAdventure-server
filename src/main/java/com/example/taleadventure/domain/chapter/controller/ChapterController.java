@@ -6,6 +6,7 @@ import com.example.taleadventure.base.success.SuccessResponseResult;
 import com.example.taleadventure.domain.chapter.dto.ChapterInfoDto;
 import com.example.taleadventure.domain.chapter.dto.ChapterRequest;
 import com.example.taleadventure.domain.chapter.service.ChapterService;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -20,12 +21,14 @@ public class ChapterController {
 
     private final ChapterService chapterService;
 
+
     @PostMapping("/save")
     public ApiSuccessResponse<ChapterInfoDto> saveTaleBook(HttpServletRequest request, ChapterRequest chapterRequest, MultipartFile multipartFile){
         String token = JwtHeaderUtil.getAccessToken(request);
         return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_CREATED, chapterService.saveChapter(chapterRequest, multipartFile));
     }
 
+    @Operation(description = "[인증] 챕터 페이지 - 홈 뷰에서 동화책 클릭 시에 챕터 조회하기")
     @GetMapping("/retrieve")
     public ApiSuccessResponse<List<ChapterInfoDto>> retrieveChapter(HttpServletRequest request, @RequestParam String name){
         String token = JwtHeaderUtil.getAccessToken(request);

@@ -6,6 +6,7 @@ import com.example.taleadventure.base.success.SuccessResponseResult;
 import com.example.taleadventure.domain.talebook.dto.TaleBookInfoDto;
 import com.example.taleadventure.domain.talebook.dto.TaleBookRequest;
 import com.example.taleadventure.domain.talebook.service.TaleBookService;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -26,6 +27,7 @@ public class TaleBookController {
         return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_CREATED, taleBookService.saveTaleBook(taleBookRequest, multipartFiles));
     }
 
+    @Operation(description = "[인증] 나만의 단어장 페이지 - 동화책 조회하기")
     @GetMapping("/retrieve")
     public ApiSuccessResponse<List<TaleBookInfoDto>> retrieveTaleBook(HttpServletRequest request){
         String token = JwtHeaderUtil.getAccessToken(request);
