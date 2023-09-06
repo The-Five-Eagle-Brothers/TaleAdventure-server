@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ChapterServiceUtils {
 
-    public static List<Chapter> findByName(ChapterRepository chapterRepository, String name){
+    public static List<Chapter> findAllByName(ChapterRepository chapterRepository, String name){
         List<Chapter> chapters = chapterRepository.findAllByTaleBookName(name);
         if(chapters == null){
             throw new NotFoundException(String.format("챕터가 존재하지 않습니다."), ErrorResponseResult.NOT_FOUND_CHAPTER_EXCEPTION);

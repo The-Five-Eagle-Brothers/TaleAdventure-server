@@ -43,7 +43,7 @@ public class ChapterService {
     @Transactional
     public List<ChapterInfoDto> retrieveChapter(String name, String token){
         Long memberId = authService.getMemberId(token);
-        List<Chapter> chapters = ChapterServiceUtils.findByName(chapterRepository, name);
+        List<Chapter> chapters = ChapterServiceUtils.findAllByName(chapterRepository, name);
         return chapters.stream()
                 .map(chapter -> {
                     return ChapterInfoDto.of(chapter);
