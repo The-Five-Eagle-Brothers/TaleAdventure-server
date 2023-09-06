@@ -1,10 +1,12 @@
 package com.example.taleadventure.domain.chapter.service;
 
+import com.example.taleadventure.domain.auth.service.AuthService;
 import com.example.taleadventure.domain.chapter.dto.ChapterInfoDto;
 import com.example.taleadventure.domain.chapter.dto.ChapterRequest;
 import com.example.taleadventure.domain.chapter.entity.Chapter;
 import com.example.taleadventure.domain.chapter.repository.ChapterRepository;
 import com.example.taleadventure.domain.image.service.S3Upload;
+import com.example.taleadventure.domain.member.repository.MemberRepository;
 import com.example.taleadventure.domain.talebook.entity.TaleBook;
 import com.example.taleadventure.domain.talebook.repository.TaleBookRepository;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +19,7 @@ import java.io.IOException;
 @RequiredArgsConstructor
 @Service
 public class ChapterService {
+    private final AuthService authService;
     private final ChapterRepository chapterRepository;
     private final TaleBookRepository taleBookRepository;
     private final S3Upload s3Upload;

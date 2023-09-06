@@ -1,5 +1,6 @@
 package com.example.taleadventure.domain.talebook.service;
 
+import com.example.taleadventure.domain.auth.service.AuthService;
 import com.example.taleadventure.domain.image.service.S3Upload;
 import com.example.taleadventure.domain.talebook.dto.TaleBookInfoDto;
 import com.example.taleadventure.domain.talebook.dto.TaleBookRequest;
@@ -17,7 +18,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Service
 public class TaleBookService {
-
+    private final AuthService authService;
     private final S3Upload s3Upload;
     private final TaleBookRepository taleBookRepository;
 
@@ -35,7 +36,8 @@ public class TaleBookService {
     }
 
     @Transactional
-    public List<TaleBookInfoDto> retrieveTaleBook(){
+    public List<TaleBookInfoDto> retrieveTaleBook(String token){
+        Long memberId = authService.getMemberId(token);
         List<TaleBook> taleBooks = TaleBookServiceUtils.findAll(taleBookRepository);
         return taleBooks.stream()
                 .map(taleBook -> {
