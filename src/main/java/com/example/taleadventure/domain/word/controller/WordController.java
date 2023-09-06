@@ -10,12 +10,11 @@ import com.example.taleadventure.domain.word.dto.WordInfoDto;
 import com.example.taleadventure.domain.word.dto.WordRequest;
 import com.example.taleadventure.domain.word.service.WordService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -28,5 +27,11 @@ public class WordController {
     public ApiSuccessResponse<WordInfoDto> saveTaleBook(HttpServletRequest request, WordRequest wordRequest, MultipartFile multipartFile){
         String token = JwtHeaderUtil.getAccessToken(request);
         return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_CREATED, wordService.saveWord(wordRequest, multipartFile));
+    }
+
+    @GetMapping("/retrieve")
+    public ApiSuccessResponse<List<WordInfoDto>> retrieveChapter(HttpServletRequest request, @RequestParam String title){
+        String token = JwtHeaderUtil.getAccessToken(request);
+        return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_SEARCH_WORD, wordService.retrieveWord(title, token));
     }
 }
