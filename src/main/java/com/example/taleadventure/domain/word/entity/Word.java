@@ -52,6 +52,7 @@ public class Word extends AuditingTimeEntity {
                 .mean(mean)
                 .sentence(sentence)
                 .example(example)
+                .bookMark(false)
                 .chapter(chapter)
                 .imageUrl(imageUrl)
                 .build();
