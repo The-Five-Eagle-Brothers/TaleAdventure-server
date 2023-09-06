@@ -37,6 +37,7 @@ public class AuthService {
 
         if(member == null){
             kakaoMember.setDay();
+            kakaoMember.updateNickname("잰조");
             memberRepository.save(kakaoMember);
         }
 

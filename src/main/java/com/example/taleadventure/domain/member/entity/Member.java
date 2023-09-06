@@ -99,4 +99,8 @@ public class Member extends AuditingTimeEntity {
         this.age = memberInfoDto.getAge();
         this.status = Member.statusStringToEnum(memberInfoDto.getStatus());
     }
+
+    public void updateNickname(String nickName){
+        this.nickName = nickName;
+    }
 }
