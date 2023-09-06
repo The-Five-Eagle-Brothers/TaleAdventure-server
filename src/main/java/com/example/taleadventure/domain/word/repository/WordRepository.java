@@ -12,4 +12,7 @@ public interface WordRepository extends JpaRepository<Word, Long> {
 
     @Query("select w from Word w where w.chapter.title = :chapterTitle")
     List<Word> findAllByChapterTitle(@Param("chapterTitle") String title);
+
+    @Query("select w from Word w where w.chapter.taleBook.name = :taleBookName")
+    List<Word> findAllByTaleBookName(@Param("taleBookName") String name);
 }

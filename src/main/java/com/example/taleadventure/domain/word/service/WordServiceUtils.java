@@ -25,4 +25,13 @@ public class WordServiceUtils {
         }
         return words;
     }
+
+    public static List<Word> findAllByTaleBookName(WordRepository wordRepository, String name){
+        List<Word> words = wordRepository.findAllByTaleBookName(name);
+        if(words == null){
+            throw new NotFoundException(String.format("북마크한 단어가 존재하지 않습니다."), ErrorResponseResult.NOT_FOUND_BOOK_MARK_WORD_EXCEPTION);
+        }
+        return words;
+    }
+
 }

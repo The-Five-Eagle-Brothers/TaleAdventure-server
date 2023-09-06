@@ -58,4 +58,15 @@ public class WordService {
             wordRepository.save(word);
         }
     }
+
+    @Transactional
+    public List<WordInfoDto> retrieveBookMarkWord(String name, String token){
+        Long memberId = authService.getMemberId(token);
+        List<Word> words = WordServiceUtils.findAllByTaleBookName(wordRepository, name);
+        return words.stream()
+                .map(word -> {
+                    return WordInfoDto.of(word);
+                }).collect(Collectors.toList());
+    }
+
 }
