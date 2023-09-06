@@ -34,4 +34,10 @@ public class WordController {
         String token = JwtHeaderUtil.getAccessToken(request);
         return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_SEARCH_WORD, wordService.retrieveWord(title, token));
     }
+
+    @PatchMapping("/update/book-mark")
+    public ApiSuccessResponse<List<WordInfoDto>> updateBookMark(HttpServletRequest request, List<WordInfoDto> wordInfoDtos){
+        String token = JwtHeaderUtil.getAccessToken(request);
+        return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_UPDATE_WORD_BOOKMARK, wordService.updateBookMark(wordInfoDtos, token));
+    }
 }

@@ -16,6 +16,7 @@ public enum SuccessResponseResult {
     SUCCESS_SEARCH_TALE_BOOK(OK, "동화책들을 조회했습니다."),
     SUCCESS_SEARCH_Chapter(OK, "동화책의 챕터들을 조회했습니다."),
     SUCCESS_SEARCH_WORD(OK, "챕터의 단어들을 조회했습니다."),
+    SUCCESS_UPDATE_WORD_BOOKMARK(OK, "단어의 북마크를 변경했습니다."),
     SUCCESS_DELETE_MEMBER(OK, "회원 탈퇴가 완료되었습니다."),
     // 201 CREATED
     SUCCESS_CREATED(CREATED, "성공적으로 생성되었습니다."),
