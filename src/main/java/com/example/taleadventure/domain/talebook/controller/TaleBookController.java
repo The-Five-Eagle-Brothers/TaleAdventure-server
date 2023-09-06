@@ -29,6 +29,6 @@ public class TaleBookController {
     @GetMapping("/retrieve")
     public ApiSuccessResponse<List<TaleBookInfoDto>> retrieveTaleBook(HttpServletRequest request){
         String token = JwtHeaderUtil.getAccessToken(request);
-        return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_CREATED, taleBookService.retrieveTaleBook());
+        return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_SEARCH_TALE_BOOK, taleBookService.retrieveTaleBook());
     }
 }
