@@ -18,6 +18,7 @@ public enum ErrorResponseResult {
 
     // 404 NOT_FOUND
     NOT_FOUND_USER_EXCEPTION(NOT_FOUND,"존재하지 않는 사용자입니다."),
+    NOT_FOUND_WORD_EXCEPTION(NOT_FOUND,"단어가 존재하지 않습니다."),
     NOT_FOUND_CHAPTER_EXCEPTION(NOT_FOUND,"챕터가 존재하지 않습니다."),
     NOT_FOUND_TALE_BOOK_EXCEPTION(NOT_FOUND,"동화책이 존재하지 않습니다.");
     // 405 METHOD_NOT_ALLOWED
