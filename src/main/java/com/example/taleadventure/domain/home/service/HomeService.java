@@ -27,6 +27,6 @@ public class HomeService {
         Long memberId = authService.getMemberId(token);
         Member member = MemberServiceUtils.findById(memberRepository, memberId);
         List<TaleBook> taleBooks = TaleBookServiceUtils.findAll(taleBookRepository);
-        return HomeResponseDto.of(member.getDay(), taleBooks);
+        return HomeResponseDto.of(member.getDay(), member.getNickName() ,taleBooks);
     }
 }

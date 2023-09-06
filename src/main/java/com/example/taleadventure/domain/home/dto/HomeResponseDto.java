@@ -1,8 +1,6 @@
 package com.example.taleadventure.domain.home.dto;
 
 import com.example.taleadventure.domain.talebook.entity.TaleBook;
-import com.example.taleadventure.domain.word.dto.WordInfoDto;
-import com.example.taleadventure.domain.word.entity.Word;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -16,11 +14,13 @@ import java.util.List;
 @AllArgsConstructor
 public class HomeResponseDto {
     Integer day;
+    String nickName;
     List<TaleBook> taleBooks;
 
-    public static HomeResponseDto of(Integer day, List<TaleBook> taleBooks){
+    public static HomeResponseDto of(Integer day, String nickName, List<TaleBook> taleBooks){
         return HomeResponseDto.builder()
                 .day(day)
+                .nickName(nickName)
                 .taleBooks(taleBooks)
                 .build();
     }

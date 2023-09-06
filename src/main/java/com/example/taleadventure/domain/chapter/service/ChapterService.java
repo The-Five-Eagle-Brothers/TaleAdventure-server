@@ -7,14 +7,18 @@ import com.example.taleadventure.domain.chapter.entity.Chapter;
 import com.example.taleadventure.domain.chapter.repository.ChapterRepository;
 import com.example.taleadventure.domain.image.service.S3Upload;
 import com.example.taleadventure.domain.member.repository.MemberRepository;
+import com.example.taleadventure.domain.talebook.dto.TaleBookInfoDto;
 import com.example.taleadventure.domain.talebook.entity.TaleBook;
 import com.example.taleadventure.domain.talebook.repository.TaleBookRepository;
+import com.example.taleadventure.domain.talebook.service.TaleBookServiceUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -35,4 +39,16 @@ public class ChapterService {
             throw new RuntimeException(e);
         }
     }
+
+    @Transactional
+    public List<ChapterInfoDto> retrieveChapter(String name, String token){
+        Long memberId = authService.getMemberId(token);
+        List<Chapter> chapters = ChapterServiceUtils.findByName(chapterRepository, name);
+        return chapters.stream()
+                .map(chapter -> {
+                    return ChapterInfoDto.of(chapter);
+                }).collect(Collectors.toList());
+    }
+
+
 }
