@@ -23,7 +23,7 @@ public class ChapterController {
 
 
     @PostMapping("/save")
-    public ApiSuccessResponse<ChapterInfoDto> saveTaleBook(HttpServletRequest request, ChapterRequest chapterRequest, MultipartFile multipartFile){
+    public ApiSuccessResponse<ChapterInfoDto> saveChapter(HttpServletRequest request, @RequestPart ChapterRequest chapterRequest, @RequestPart MultipartFile multipartFile){
         String token = JwtHeaderUtil.getAccessToken(request);
         return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_CREATED, chapterService.saveChapter(chapterRequest, multipartFile));
     }

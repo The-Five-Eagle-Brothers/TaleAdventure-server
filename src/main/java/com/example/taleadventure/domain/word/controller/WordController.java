@@ -25,7 +25,7 @@ public class WordController {
     private final WordService wordService;
 
     @PostMapping("/save")
-    public ApiSuccessResponse<WordInfoDto> saveWord(HttpServletRequest request, WordRequest wordRequest, MultipartFile multipartFile){
+    public ApiSuccessResponse<WordInfoDto> saveWord(HttpServletRequest request, @RequestPart WordRequest wordRequest, @RequestPart MultipartFile multipartFile){
         String token = JwtHeaderUtil.getAccessToken(request);
         return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_CREATED, wordService.saveWord(wordRequest, multipartFile));
     }

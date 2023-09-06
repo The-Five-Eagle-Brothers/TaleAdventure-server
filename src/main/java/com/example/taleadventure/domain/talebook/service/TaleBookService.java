@@ -29,7 +29,7 @@ public class TaleBookService {
             String chapterImageUrl = s3Upload.upload(multipartFile.get(1));
             String wordBookImageUrl = s3Upload.upload(multipartFile.get(2));
             TaleBook taleBook = taleBookRepository.save(taleBookRequest.toTaleBookEntity(libraryImageUrl, chapterImageUrl, wordBookImageUrl));
-            return TaleBookInfoDto.of(taleBook);
+            return TaleBookInfoDto.of(taleBook); // 여기서 에렃
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

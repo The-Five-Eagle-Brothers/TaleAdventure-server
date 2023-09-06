@@ -22,7 +22,7 @@ public class TaleBookController {
     private final TaleBookService taleBookService;
 
     @PostMapping("/save")
-    public ApiSuccessResponse<TaleBookInfoDto> saveTaleBook(HttpServletRequest request, TaleBookRequest taleBookRequest, List<MultipartFile> multipartFiles){
+    public ApiSuccessResponse<TaleBookInfoDto> saveTaleBook(HttpServletRequest request, @RequestPart TaleBookRequest taleBookRequest, @RequestPart List<MultipartFile> multipartFiles){
         String token = JwtHeaderUtil.getAccessToken(request);
         return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_CREATED, taleBookService.saveTaleBook(taleBookRequest, multipartFiles));
     }

@@ -28,10 +28,13 @@ public class TaleBook {
     @Column(nullable = false)
     private Category category;
 
+    @Column(length = 500)
     private String libraryImageUrl;
 
+    @Column(length = 500)
     private String chapterImageUrl;
 
+    @Column(length = 500)
     private String wordBookImageUrl;
 
     public static Category categoryStringToEnum(String str){

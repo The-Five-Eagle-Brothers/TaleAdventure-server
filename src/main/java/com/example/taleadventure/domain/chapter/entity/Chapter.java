@@ -23,7 +23,8 @@ public class Chapter extends AuditingTimeEntity {
     @Column(nullable = false)
     private String title;
 
-    @Column(nullable = false)
+
+    @Column(nullable = false, length = 500)
     private String imageUrl;
 
     @ManyToOne

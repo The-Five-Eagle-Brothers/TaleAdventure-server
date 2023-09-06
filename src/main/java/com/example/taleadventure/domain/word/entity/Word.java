@@ -35,7 +35,7 @@ public class Word extends AuditingTimeEntity {
     @Column(nullable = false)
     private Boolean bookMark;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 500)
     private String imageUrl;
 
     @ManyToOne
