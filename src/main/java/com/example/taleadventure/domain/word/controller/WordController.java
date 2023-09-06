@@ -45,5 +45,10 @@ public class WordController {
         return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_UPDATE_WORD_BOOKMARK);
     }
 
-
+    @Operation(description = "[인증] 단어 페이지 - 북마크한 단어 조회하기")
+    @GetMapping("/retrieve/book-mark")
+    public ApiSuccessResponse<List<WordInfoDto>> retrieveWord(HttpServletRequest request, @RequestParam String name){
+        String token = JwtHeaderUtil.getAccessToken(request);
+        return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_RETRIEVE_BOOK_MARK_WORD, wordService.retrieveBookMarkWord(name, token));
+    }
 }
