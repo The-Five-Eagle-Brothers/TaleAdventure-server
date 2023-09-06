@@ -55,6 +55,7 @@ public class WordService {
         for(int i = 0; i < wordInfoDtos.size(); i++){
             Word word = WordServiceUtils.findById(wordRepository, wordInfoDtos.get(i).getId());
             word.updateBookMark(wordInfoDtos.get(i).getBookMark());
+            wordRepository.save(word);
         }
     }
 }

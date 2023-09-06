@@ -42,6 +42,10 @@ public class Word extends AuditingTimeEntity {
     @JoinColumn(name = "chapter_id")
     private Chapter chapter;
 
+    public void updateBookMark(Boolean bookMark){
+        this.bookMark = bookMark;
+    }
+
     public static Word newInstance(String name, String mean, String sentence, String example, Chapter chapter, String imageUrl){
         return Word.builder()
                 .name(name)
