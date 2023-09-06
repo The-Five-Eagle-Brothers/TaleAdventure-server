@@ -15,6 +15,6 @@ public class TaleBookRequest {
     private String category;
 
     public TaleBook toTaleBookEntity(String libraryImageUrl, String chapterImageUrl, String wordBookImageUrl){
-        return TaleBook.newInstance(name, category, libraryImageUrl, chapterImageUrl, wordBookImageUrl);
+        return TaleBook.newInstance(this.name, this.category, libraryImageUrl, chapterImageUrl, wordBookImageUrl);
     }
 }
