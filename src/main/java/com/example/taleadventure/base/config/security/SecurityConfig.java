@@ -10,6 +10,10 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @Configuration
@@ -28,6 +32,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         JwtAuthenticationFilter jwtAuthFilter = new JwtAuthenticationFilter(authTokenProvider);
 
         http.httpBasic().disable();
+
+        http.cors(c -> {
+            CorsConfigurationSource source = request -> {
+                //Cors 허용 패턴
+                CorsConfiguration config = new CorsConfiguration();
+                config.setAllowedOrigins(
+                        List.of("*")
+                );
+                config.setAllowedMethods(
+                        List.of("*")
+                );
+                config.setAllowedHeaders(
+                        List.of("*")
+                );
+                return config;
+            };
+            c.configurationSource(source);
+        });
 
         http.authorizeRequests()
                 .antMatchers(HttpMethod.OPTIONS).permitAll()
