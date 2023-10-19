@@ -17,6 +17,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/chapter")
+@CrossOrigin(origins = "*")
 public class ChapterController {
 
     private final ChapterService chapterService;

@@ -7,6 +7,7 @@ import com.example.taleadventure.domain.home.dto.HomeResponseDto;
 import com.example.taleadventure.domain.home.service.HomeService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/home")
+@CrossOrigin(origins = "*")
 public class HomeController {
 
     private final HomeService homeService;

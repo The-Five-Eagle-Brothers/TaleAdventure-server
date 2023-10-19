@@ -12,6 +12,7 @@ import java.io.IOException;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/image")
+@CrossOrigin(origins = "*")
 public class ImageController {
 
     private final S3Upload s3Upload;

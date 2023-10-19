@@ -20,6 +20,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/word")
+@CrossOrigin(origins = "*")
 public class WordController {
 
     private final WordService wordService;

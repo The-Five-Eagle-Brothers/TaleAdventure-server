@@ -33,24 +33,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.httpBasic().disable();
 
-        http.cors(c -> {
-            CorsConfigurationSource source = request -> {
-                //Cors 허용 패턴
-                CorsConfiguration config = new CorsConfiguration();
-                config.setAllowedOrigins(
-                        List.of("*")
-                );
-                config.setAllowedMethods(
-                        List.of("*")
-                );
-                config.setAllowedHeaders(
-                        List.of("*")
-                );
-                return config;
-            };
-            c.configurationSource(source);
-        });
-
         http.authorizeRequests()
                 .antMatchers(HttpMethod.OPTIONS).permitAll()
                 .antMatchers("/member/**","/chapter/**","/home/**","/talebook/**","/word/**").permitAll()

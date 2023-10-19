@@ -17,6 +17,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/talebook")
+@CrossOrigin(origins = "*")
 public class TaleBookController {
 
     private final TaleBookService taleBookService;
