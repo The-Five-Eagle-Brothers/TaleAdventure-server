@@ -22,7 +22,7 @@ public class Member extends AuditingTimeEntity {
     private Long id;
 
     @Column(nullable = false)
-    private String nickName;
+    private String nickname;
 
     @Column(nullable = false)
     private String email;
@@ -52,8 +52,8 @@ public class Member extends AuditingTimeEntity {
         this.day = 1;
     }
 
-    public void updateNickName(String nickName){
-        this.nickName = nickName;
+    public void updateNickname(String nickname){
+        this.nickname = nickname;
     }
 
     public void updateDay(){
@@ -93,14 +93,11 @@ public class Member extends AuditingTimeEntity {
     }
 
     public void updateMember(MemberInfoDto memberInfoDto){
-        this.nickName = memberInfoDto.getNickName();
+        this.nickname = memberInfoDto.getNickname();
         this.email = memberInfoDto.getEmail();
         this.gender = Member.genderStringToEnum(memberInfoDto.getGender());
         this.age = memberInfoDto.getAge();
         this.status = Member.statusStringToEnum(memberInfoDto.getStatus());
     }
 
-    public void updateNickname(String nickName){
-        this.nickName = nickName;
-    }
 }

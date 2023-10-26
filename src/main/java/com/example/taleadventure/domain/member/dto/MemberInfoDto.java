@@ -9,7 +9,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MemberInfoDto {
-    private String nickName;
+    private String nickname;
     private String email;
     private String gender;
     private Integer age;
@@ -18,7 +18,7 @@ public class MemberInfoDto {
 
     public static MemberInfoDto of(Member member){
         return MemberInfoDto.builder()
-                .nickName(member.getNickName())
+                .nickname(member.getNickname())
                 .email(member.getEmail())
                 .gender(Member.genderEnumToString(member.getGender()))
                 .age(member.getAge())

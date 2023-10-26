@@ -32,9 +32,9 @@ public class MemberController {
 
     @Operation(description = "[인증] 이름과 나이 설정 페이지 - 초기 유저 닉네임 설정하기")
     @PatchMapping("/set/nickname")
-    public ApiSuccessResponse<MemberInfoDto> setNickName(HttpServletRequest request, @RequestBody Map<String,String> nickName){
+    public ApiSuccessResponse<MemberInfoDto> setNickname(HttpServletRequest request, @RequestBody Map<String,String> nickname){
         String token = JwtHeaderUtil.getAccessToken(request);
-        return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_OK, memberService.setNickName(nickName.get("nickName"), token));
+        return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_OK, memberService.setNickname(nickname.get("nickname"), token));
     }
 
     @Operation(description = "[인증] 회원 정보 수정 페이지 - 회원 정보 수정하기")

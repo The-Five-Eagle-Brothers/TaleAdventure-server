@@ -23,10 +23,10 @@ public class MemberService {
     }
 
     @Transactional
-    public MemberInfoDto setNickName (String nickName, String token){
+    public MemberInfoDto setNickname (String nickname, String token){
         Long memberId = authService.getMemberId(token);
         Member member = MemberServiceUtils.findById(memberRepository, memberId);
-        member.updateNickName(nickName);
+        member.updateNickname(nickname);
         return MemberInfoDto.of(memberRepository.save(member));
     }
 

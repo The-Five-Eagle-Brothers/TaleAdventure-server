@@ -43,7 +43,7 @@ public class ClientKaKao {
 
         return Member.builder()
                 .socialId(String.valueOf(kakaoProfile.getId()))
-                .nickName(kakaoProfile.getKakao_account().getProfile().nickname)
+                .nickname(kakaoProfile.getKakao_account().getProfile().nickname)
                 .email(kakaoProfile.getKakao_account().email)
                 .gender(Member.genderStringToEnum(kakaoProfile.getKakao_account().gender))
                 .status(Status.ACTIVE)
