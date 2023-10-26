@@ -33,6 +33,7 @@ public class Member extends AuditingTimeEntity {
 
     private Integer age;
 
+    // 카카오 프로필 인스턴스의 @Id long id값 느낌
     @Column(nullable = false)
     private String socialId;
 
