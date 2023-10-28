@@ -7,6 +7,7 @@ import com.example.taleadventure.base.error.ErrorResponseResult;
 import com.example.taleadventure.base.error.exception.NotFoundException;
 import com.example.taleadventure.domain.auth.dto.AuthRequest;
 import com.example.taleadventure.domain.auth.dto.AuthResponse;
+import com.example.taleadventure.domain.member.dto.MemberInfoDto;
 import com.example.taleadventure.domain.member.entity.Member;
 import com.example.taleadventure.domain.member.repository.MemberRepository;
 import io.jsonwebtoken.Claims;
@@ -43,8 +44,8 @@ public class AuthService {
 
         return AuthResponse.builder()
                 .appToken(appToken.getToken())
+                .memberInfoDto(MemberInfoDto.of(member))
                 .build();
-
     }
 
     public Long getMemberId(String token){
