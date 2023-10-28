@@ -1,13 +1,10 @@
 package com.example.taleadventure.domain.talebook.entity;
 
-import com.example.taleadventure.domain.member.enummerate.Gender;
 import com.example.taleadventure.domain.talebook.enummerate.Category;
-import com.example.taleadventure.domain.word.entity.Word;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+
 
 @ToString
 @Builder

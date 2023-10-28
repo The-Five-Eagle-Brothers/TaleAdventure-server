@@ -4,6 +4,7 @@ import com.example.taleadventure.base.config.login.JwtHeaderUtil;
 import com.example.taleadventure.base.dto.ApiSuccessResponse;
 import com.example.taleadventure.base.success.SuccessResponseResult;
 import com.example.taleadventure.domain.member.dto.MemberInfoDto;
+import com.example.taleadventure.domain.member.dto.SavePointDto;
 import com.example.taleadventure.domain.member.service.MemberService;
 import io.swagger.annotations.Api;
 import io.swagger.v3.oas.annotations.Operation;
@@ -65,5 +66,20 @@ public class MemberController {
     public ApiSuccessResponse<Integer> checkMemberInfoValid(HttpServletRequest request){
         String token = JwtHeaderUtil.getAccessToken(request);
         return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_OK, memberService.checkMemberInfoValid(token));
+    }
+
+    @Operation(description = "[인증] 중간 저장 - 웹에서동화의 플레이 현황 중간 저장")
+    @PostMapping(value = "/update/status")
+    public ApiSuccessResponse<String> savePoint(HttpServletRequest request, @RequestBody SavePointDto savePointDto){
+        String token = JwtHeaderUtil.getAccessToken(request);
+        memberService.savePoint(token, savePointDto);
+        return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_SAVE_POINT);
+    }
+
+    @Operation(description = "[인증] 이어서 읽기 - 웹에서 플레이 한 동화의 중간 저장 포인트 리턴")
+    @GetMapping(value = "/retrieve/status")
+    public ApiSuccessResponse<String> retrievePoint(HttpServletRequest request, @RequestParam String taleBookName){
+        String token = JwtHeaderUtil.getAccessToken(request);
+        return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_OK, memberService.retrievePoint(token, taleBookName));
     }
 }

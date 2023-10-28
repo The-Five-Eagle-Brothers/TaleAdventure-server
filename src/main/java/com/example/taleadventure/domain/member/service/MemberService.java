@@ -2,6 +2,7 @@ package com.example.taleadventure.domain.member.service;
 
 import com.example.taleadventure.domain.auth.service.AuthService;
 import com.example.taleadventure.domain.member.dto.MemberInfoDto;
+import com.example.taleadventure.domain.member.dto.SavePointDto;
 import com.example.taleadventure.domain.member.entity.Member;
 import com.example.taleadventure.domain.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -58,5 +59,28 @@ public class MemberService {
         return member.getAge();
     }
 
+    @Transactional
+    public void savePoint(String token, SavePointDto savePointDto){
+        Long memberId = authService.getMemberId(token);
+        Member member = MemberServiceUtils.findById(memberRepository, memberId);
+        if(savePointDto.getTaleBookName().equals("어린왕자")){
+            member.updateTheLittlePrinceStatus(savePointDto.getStatus());
+        }else if(savePointDto.getTaleBookName().equals("토끼와 거북이")){
+            member.updateRabbitAndTurtleStatus(savePointDto.getStatus());
+        }
+    }
+
+    @Transactional
+    public String retrievePoint(String token, String taleBookName){
+        Long memberId = authService.getMemberId(token);
+        Member member = MemberServiceUtils.findById(memberRepository, memberId);
+        if(taleBookName.equals("어린왕자")){
+            return member.getTheLittlePrinceStatus();
+        }else if(taleBookName.equals("토끼와 거북이")){
+            return member.getRabbitAndTurtleStatus();
+        }else{
+            return "존재하지 않는 동화입니다.";
+        }
+    }
 }
 

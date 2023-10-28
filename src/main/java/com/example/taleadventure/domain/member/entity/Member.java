@@ -44,6 +44,10 @@ public class Member extends AuditingTimeEntity {
     @Column(nullable = false)
     private Status status;
 
+    private String theLittlePrinceStatus;
+
+    private String rabbitAndTurtleStatus;
+
 
     public void setAge(Integer age){
         this.age = age;
@@ -60,6 +64,8 @@ public class Member extends AuditingTimeEntity {
     public void updateDay(){
         this.day++;
     }
+    public void updateTheLittlePrinceStatus(String status){this.theLittlePrinceStatus = status;}
+    public void updateRabbitAndTurtleStatus(String status){this.theLittlePrinceStatus = status;}
 
     public static String genderEnumToString(Gender gender){
         if(gender == Gender.MALE){
