@@ -44,7 +44,6 @@ public class AuthService {
 
         return AuthResponse.builder()
                 .appToken(appToken.getToken())
-                .memberInfoDto(MemberInfoDto.of(member))
                 .build();
     }
 
@@ -62,4 +61,5 @@ public class AuthService {
             throw new NotFoundException(String.format("존재하지 않는 유저입니다."), ErrorResponseResult.NOT_FOUND_USER_EXCEPTION);
         }
     }
+
 }

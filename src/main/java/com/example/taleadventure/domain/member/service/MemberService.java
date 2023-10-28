@@ -51,5 +51,12 @@ public class MemberService {
         member.updateDay();
     }
 
+    @Transactional
+    public Integer checkMemberInfoValid(String token){
+        Long memberId = authService.getMemberId(token);
+        Member member = MemberServiceUtils.findById(memberRepository, memberId);
+        return member.getAge();
+    }
+
 }
 

@@ -59,4 +59,11 @@ public class MemberController {
         memberService.increaseDay(token);
         return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_INCREASE_DAY);
     }
+
+    @Operation(description = "[인증] 최초 접속 - 앱 토큰 기반 나이대 리턴")
+    @GetMapping(value = "/valid")
+    public ApiSuccessResponse<Integer> checkMemberInfoValid(HttpServletRequest request){
+        String token = JwtHeaderUtil.getAccessToken(request);
+        return ApiSuccessResponse.successResponse(SuccessResponseResult.SUCCESS_OK, memberService.checkMemberInfoValid(token));
+    }
 }
