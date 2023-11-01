@@ -48,7 +48,7 @@ public class FirebaseCloudMessageService {
         FcmMessage fcmMessage = FcmMessage.builder()
                 .message(FcmMessage.Message.builder()
                         .token(targetToken)
-                        .notification(FcmMessage.Notification.builder()
+                        .data(FcmMessage.Data.builder()
                                 .title(title)
                                 .body(body)
                                 .image(null)
@@ -59,8 +59,6 @@ public class FirebaseCloudMessageService {
     }
 
     private String getAccessToken() throws IOException {
-        String firebaseConfigPath = "firebase/firebase_service_key.json";
-
         GoogleCredentials googleCredentials = GoogleCredentials
                 .fromStream(new ClassPathResource(FIREBASE_CONFIG_PATH).getInputStream())
                 .createScoped(List.of("https://www.googleapis.com/auth/cloud-platform"));
