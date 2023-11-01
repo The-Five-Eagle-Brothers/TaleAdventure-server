@@ -43,6 +43,11 @@ dependencies {
     // S3
     implementation "com.amazonaws:aws-java-sdk-s3:1.12.281"
 
+    // firebase
+    implementation 'com.google.firebase:firebase-admin:6.8.1'
+    implementation group: 'com.squareup.okhttp3', name: 'okhttp', version: '4.2.2'
+
+
 }
 
 tasks.named('test') {

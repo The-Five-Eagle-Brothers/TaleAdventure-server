@@ -52,3 +52,9 @@ cloud:
       static: ap-northeast-2
     stack:
       auto: false
+
+firebase:
+  fcm:
+    config:
+      API_URL: ${API_URL}
+      path: ${FIREBASE_CONFIG_PATH}
