@@ -65,7 +65,7 @@ public class Member extends AuditingTimeEntity {
         this.day++;
     }
     public void updateTheLittlePrinceStatus(String status){this.theLittlePrinceStatus = status;}
-    public void updateRabbitAndTurtleStatus(String status){this.theLittlePrinceStatus = status;}
+    public void updateRabbitAndTurtleStatus(String status){this.rabbitAndTurtleStatus = status;}
 
     public static String genderEnumToString(Gender gender){
         if(gender == Gender.MALE){
